@@ -1,1 +1,26 @@
-@import '_normalize.scss';
+@import '_normalize';
+@import '_globals';
+@import '_utils';
+@import '_varibles';
+
+.editor {
+	border: 3px solid blue;
+}
+
+.preview {
+	border: 3px solid green;
+}
+
+.editor,
+.preview {
+	min-height: 95vh; // временно - потом размер будет ограничен контентом
+	flex: 1 1 50%;
+}
+
+#root {
+	display: flex;
+	max-width: 100vw;
+	padding-inline: var(--container-padding);
+	padding-top: var(--container-padding);
+	column-gap: 5vw; // временно
+}
