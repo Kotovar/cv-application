@@ -15,7 +15,9 @@
 	border: 3px solid green;
 }
 
-.mainInformationPanel {
+.mainInformationPanel,
+.workInformationPanel,
+.work {
 	border: 3px solid black;
 	min-height: 10vh;
 	width: 90%;
@@ -35,6 +37,17 @@
 	flex: 1 1 50%;
 }
 
+// стиль для раздела с добавлением карточек работы
+.workInformationPanel {
+	display: flex;
+	flex-direction: column;
+
+	button:last-child {
+		max-width: 30%;
+		margin-inline: auto;
+	}
+}
+
 #root {
 	display: flex;
 	max-width: 100vw;
@@ -49,4 +62,25 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+}
+
+// форма для карточки работы
+
+.work-section {
+	border-bottom: 3px solid black;
+	min-height: 10vh;
+	width: 95%;
+	margin-inline: auto;
+
+	h1 {
+		text-align: center;
+	}
+
+	.preview__work-card {
+		border: 2px solid black;
+		min-height: 10vh;
+		display: grid;
+		grid-template-columns: 30% 1fr;
+		align-items: center;
+	}
 }
