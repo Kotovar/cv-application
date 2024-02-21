@@ -3,12 +3,30 @@
 @import '_utils';
 @import '_varibles';
 
+// Временно! - форма для редактирования
 .editor {
 	border: 3px solid blue;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .preview {
 	border: 3px solid green;
+}
+
+.mainInformationPanel {
+	border: 3px solid black;
+	min-height: 10vh;
+	width: 90%;
+	margin-inline: auto;
+}
+
+.buttonPanel {
+	border: 3px solid black;
+	height: 5vh;
+	width: 90%;
+	margin-inline: auto;
 }
 
 .editor,
@@ -23,4 +41,12 @@
 	padding-inline: var(--container-padding);
 	padding-top: var(--container-padding);
 	column-gap: 5vw; // временно
+}
+
+// Временно! - форма для превью
+.preview__main {
+	border-bottom: 3px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }

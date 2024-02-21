@@ -1,16 +1,17 @@
-import {ResumeContext} from './Context';
-import {useContext} from 'react';
+import PropTypes from 'prop-types';
 
-function ButtonsPanel() {
-	function showViewPanel() {}
-
+function ButtonsPanel(props) {
 	return (
 		<div className="buttonPanel">
-			<button onClick={showViewPanel}>Свернуть превью</button>
+			<button onClick={props.onTogglePreview}>Свернуть превью</button>
 			<button>Очистить резюме</button>
 			<button>Выгрузить в pdf</button>
 		</div>
 	);
 }
+
+ButtonsPanel.propTypes = {
+	onTogglePreview: PropTypes.func.isRequired,
+};
 
 export default ButtonsPanel;
