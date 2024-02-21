@@ -83,4 +83,13 @@ const initialContacts = {
 			workplaceResponsibilities: 'do that and that',
 		},
 	],
+	education: [
+		{
+			establishment: 'Siberian State Technological University, Krasnoyarsk',
+			degree: 'Specialist Degree',
+			startOfEducation: '2008',
+			endOfEducation: '2013',
+			location: 'Russia, Krasnoyarsk',
+		},
+	],
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 function MainInformationPanel({onPortfolioChange}) {
 	return (
 		<div className="mainInformationPanel">
+			<h1>Personal information</h1>
 			<div className="mainInformationPanel__inputs">
 				<form onSubmit={(e) => e.preventDefault()}>
 					<div className="input_field">

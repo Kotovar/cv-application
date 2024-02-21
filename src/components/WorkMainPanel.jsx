@@ -33,10 +33,9 @@ function WorkInformationPanel(props) {
 		/>
 	) : (
 		<div className="workInformationPanel">
+			<h1>Work experience</h1>
 			{worksList}
-			<button onClick={() => setCurrentCard(emptyCard)}>
-				Add work experience
-			</button>
+			<button onClick={() => setCurrentCard(emptyCard)}>Add</button>
 		</div>
 	);
 }

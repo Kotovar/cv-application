@@ -1,7 +1,8 @@
 import ButtonsPanel from './ButtonsPanel';
 import PropTypes from 'prop-types';
 import MainInformationPanel from './MainInformationPanel';
-import WorkInformationPanel from './WorkInformationPanel';
+import WorkInformationPanel from './WorkMainPanel';
+import EducationInformationPanel from './EducationMainPanel';
 
 function EditingPanel(props) {
 	return (
@@ -14,6 +15,7 @@ function EditingPanel(props) {
 				onUpdateWorkCard={props.onUpdateWorkCard}
 				onAddWorkCard={props.onAddWorkCard}
 			/>
+			<EducationInformationPanel />
 		</div>
 	);
 }
