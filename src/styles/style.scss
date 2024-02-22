@@ -15,9 +15,25 @@
 	border: 3px solid green;
 }
 
+.skillsPanel__list {
+	min-height: 5vh;
+}
+
+.skillsPanel__inputField {
+	form {
+		display: flex;
+		margin-inline: 1vw;
+	}
+}
+
+.skillsPanel__input {
+	width: 100%;
+}
+
 .mainInformationPanel,
 .workInformationPanel,
 .educationInformationPanel,
+.skillsPanel,
 .work,
 .education {
 	border: 3px solid black;
@@ -41,6 +57,21 @@
 .preview {
 	min-height: 95vh; // временно - потом размер будет ограничен контентом
 	flex: 1 1 50%;
+}
+
+.skillsPanel__list {
+	display: flex;
+	column-gap: 8px;
+	margin: 8px;
+}
+// карточка заполнения скила
+.skillCard {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	border: 1px solid black;
+	padding: 8px 16px;
+	border-radius: 5px;
 }
 
 // стиль для раздела с добавлением карточек работы
@@ -108,5 +139,26 @@
 		display: grid;
 		grid-template-columns: 30% 1fr;
 		align-items: center;
+	}
+}
+
+.skills-section {
+	border-bottom: 3px solid black;
+	min-height: 10vh;
+	width: 95%;
+	margin-inline: auto;
+
+	h1 {
+		text-align: center;
+	}
+}
+
+.skills-section-list {
+	display: flex;
+	column-gap: 16px;
+	.skills-section-card {
+		border: 2px solid black;
+		padding: 8px 16px;
+		border-radius: 5px;
 	}
 }

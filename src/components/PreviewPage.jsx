@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function PreviewPanel({contacts, works, educations}) {
+function PreviewPanel({contacts, works, educations, skills}) {
 	const worksList = works.map((work) => (
 		<div key={work.companyName} className="preview__work-card">
 			<div className="preview__work-card__left">
@@ -50,6 +50,14 @@ function PreviewPanel({contacts, works, educations}) {
 		</div>
 	));
 
+	// Убрать если в объекте уже будет проверка через Set
+	const skillsList = Array.from(new Set(skills)).map((skill) => (
+		<div key={skill} className="skills-section-card">
+			<div>{skill}</div>
+		</div>
+	));
+	// Убрать если в объекте уже будет проверка через Set
+
 	return (
 		<div className="preview">
 			<div className="preview__main">
@@ -76,6 +84,10 @@ function PreviewPanel({contacts, works, educations}) {
 				<h1>Education</h1>
 				{educationList}
 			</div>
+			<div className="skills-section">
+				<h1>Skills</h1>
+				<div className="skills-section-list">{skillsList}</div>
+			</div>
 		</div>
 	);
 }
@@ -94,4 +106,5 @@ PreviewPanel.propTypes = {
 
 	works: PropTypes.array.isRequired,
 	educations: PropTypes.array.isRequired,
+	skills: PropTypes.array.isRequired,
 };

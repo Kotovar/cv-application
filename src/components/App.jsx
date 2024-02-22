@@ -57,6 +57,9 @@ function App() {
 						(el) => el.establishment !== name,
 					);
 					break;
+				case 'skill':
+					draft.skills = draft.skills.filter((el) => el !== name);
+					break;
 			}
 		});
 	}
@@ -71,12 +74,14 @@ function App() {
 				onAddCard={addCard}
 				works={portfolio.work}
 				educations={portfolio.education}
+				skills={portfolio.skills}
 			/>
 			{show && (
 				<PreviewPanel
 					contacts={portfolio.mainField}
 					works={portfolio.work}
 					educations={portfolio.education}
+					skills={portfolio.skills}
 				/>
 			)}
 		</>
@@ -119,4 +124,5 @@ const initialContacts = {
 			location: 'Russia, Krasnoyarsk',
 		},
 	],
+	skills: ['javaScript', 'Html', 'Css', 'Css', 'Webpack'],
 };

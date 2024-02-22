@@ -2,6 +2,7 @@ import ButtonsPanel from './ButtonsPanel';
 import PropTypes from 'prop-types';
 import MainInformationPanel from './MainPanel';
 import CardList from './CardList';
+import SkillsPanel from './SkillsPanel';
 
 function EditingPanel(props) {
 	return (
@@ -22,6 +23,7 @@ function EditingPanel(props) {
 				onUpdateCard={props.onUpdateCard}
 				onAddCard={props.onAddCard}
 			/>
+			<SkillsPanel skills={props.skills} onDeleteCard={props.onDeleteCard} />
 		</div>
 	);
 }
@@ -34,6 +36,7 @@ EditingPanel.propTypes = {
 	onAddCard: PropTypes.func.isRequired,
 	works: PropTypes.array,
 	educations: PropTypes.array,
+	skills: PropTypes.array,
 };
 
 export default EditingPanel;
