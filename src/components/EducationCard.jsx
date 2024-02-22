@@ -3,7 +3,7 @@ import {useImmer} from 'use-immer';
 
 function EducationCard({
 	education,
-	onCloseWorkCard,
+	onCloseCard,
 	onDeleteCard,
 	onUpdateCard,
 	onAddCard,
@@ -12,16 +12,16 @@ function EducationCard({
 	const [newCard, updateNewCard] = useImmer(tempObj);
 
 	function deleteCard() {
-		onDeleteCard(education.establishment);
-		onCloseWorkCard();
+		onDeleteCard(education.establishment, 'education');
+		onCloseCard();
 	}
 
 	function updateCard() {
 		if (education.establishment && newCard.establishment) {
-			onUpdateCard(education.establishment, newCard);
-			onCloseWorkCard();
+			onUpdateCard(education.establishment, newCard, 'education');
+			onCloseCard();
 		} else if (newCard.establishment) {
-			onAddCard(newCard, 'education'), onCloseWorkCard();
+			onAddCard(newCard, 'education'), onCloseCard();
 		}
 	}
 
@@ -36,7 +36,7 @@ function EducationCard({
 			<div className="education__inputs">
 				<form onSubmit={(e) => e.preventDefault()}>
 					<div className="input_field">
-						<label htmlFor="establishment">Establishment Name</label>
+						<label htmlFor="establishment">Establishment</label>
 						<input
 							type="text"
 							id="establishment"
@@ -56,7 +56,7 @@ function EducationCard({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="startOfEducation">Start of education</label>
+						<label htmlFor="startOfEducation">Start Date</label>
 						<input
 							type="text"
 							id="startOfEducation"
@@ -67,7 +67,7 @@ function EducationCard({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="endOfEducation">End of eEducation</label>
+						<label htmlFor="endOfEducation">End Date</label>
 						<input
 							type="text"
 							id="endOfEducation"
@@ -90,7 +90,7 @@ function EducationCard({
 			</div>
 			<div className="education__buttons">
 				<button onClick={deleteCard}>Удалить</button>
-				<button onClick={onCloseWorkCard}>Отменить</button>
+				<button onClick={onCloseCard}>Отменить</button>
 				<button onClick={updateCard}>Сохранить</button>
 			</div>
 		</div>
@@ -100,7 +100,7 @@ function EducationCard({
 export default EducationCard;
 
 EducationCard.propTypes = {
-	onCloseWorkCard: PropTypes.func.isRequired,
+	onCloseCard: PropTypes.func.isRequired,
 	onDeleteCard: PropTypes.func.isRequired,
 	onUpdateCard: PropTypes.func.isRequired,
 	onAddCard: PropTypes.func.isRequired,

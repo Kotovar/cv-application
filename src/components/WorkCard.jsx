@@ -1,27 +1,21 @@
 import PropTypes from 'prop-types';
 import {useImmer} from 'use-immer';
 
-function WorkCard({
-	onCloseWorkCard,
-	work,
-	onDeleteWorkCard,
-	onUpdateWorkCard,
-	onAddWorkCard,
-}) {
+function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 	const tempObj = {...work};
 	const [newCard, updateNewCard] = useImmer(tempObj);
 
 	function deleteCard() {
-		onDeleteWorkCard(work.companyName);
-		onCloseWorkCard();
+		onDeleteCard(work.companyName, 'work');
+		onCloseCard();
 	}
 
 	function updateCard() {
 		if (work.companyName && newCard.companyName) {
-			onUpdateWorkCard(work.companyName, newCard);
-			onCloseWorkCard();
+			onUpdateCard(work.companyName, newCard, 'work');
+			onCloseCard();
 		} else if (newCard.companyName) {
-			onAddWorkCard(newCard, 'work'), onCloseWorkCard();
+			onAddCard(newCard, 'work'), onCloseCard();
 		}
 	}
 
@@ -54,7 +48,7 @@ function WorkCard({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="startOfWork">Start of work</label>
+						<label htmlFor="startOfWork">Start Date</label>
 						<input
 							type="text"
 							id="startOfWork"
@@ -63,7 +57,7 @@ function WorkCard({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="endOfWork">End of work</label>
+						<label htmlFor="endOfWork">End Date</label>
 						<input
 							type="text"
 							id="endOfWork"
@@ -88,7 +82,7 @@ function WorkCard({
 			</div>
 			<div className="work__buttons">
 				<button onClick={deleteCard}>Удалить</button>
-				<button onClick={onCloseWorkCard}>Отменить</button>
+				<button onClick={onCloseCard}>Отменить</button>
 				<button onClick={updateCard}>Сохранить</button>
 			</div>
 		</div>
@@ -98,10 +92,10 @@ function WorkCard({
 export default WorkCard;
 
 WorkCard.propTypes = {
-	onCloseWorkCard: PropTypes.func.isRequired,
-	onDeleteWorkCard: PropTypes.func.isRequired,
-	onUpdateWorkCard: PropTypes.func.isRequired,
-	onAddWorkCard: PropTypes.func.isRequired,
+	onCloseCard: PropTypes.func.isRequired,
+	onDeleteCard: PropTypes.func.isRequired,
+	onUpdateCard: PropTypes.func.isRequired,
+	onAddCard: PropTypes.func.isRequired,
 	work: PropTypes.shape({
 		companyName: PropTypes.string.isRequired,
 		jobPosition: PropTypes.string.isRequired,

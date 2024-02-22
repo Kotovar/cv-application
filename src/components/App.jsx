@@ -7,9 +7,7 @@ function App() {
 	const [show, setShow] = useState(true);
 	const [portfolio, updatePortfolio] = useImmer(initialContacts);
 
-	function handleTogglePreview() {
-		setShow(!show);
-	}
+	const handleTogglePreview = () => setShow(!show);
 
 	function handlePortfolioMainChange(property, value) {
 		updatePortfolio((draft) => {
@@ -17,23 +15,20 @@ function App() {
 		});
 	}
 
-	function updateWorkCard(oldCardName, newCard) {
+	function updateCard(oldCardName, newCard, section) {
 		updatePortfolio((draft) => {
-			for (let i = 0; i < draft.work.length; i++) {
-				if (draft.work[i].companyName === oldCardName) {
-					draft.work[i] = newCard;
-				}
-			}
-		});
-	}
-
-	// Объединить с функцией выше
-	function updateEducationCard(oldCardName, newCard) {
-		updatePortfolio((draft) => {
-			for (let i = 0; i < draft.education.length; i++) {
-				if (draft.education[i].establishment === oldCardName) {
-					draft.education[i] = newCard;
-				}
+			const {work, education} = draft;
+			switch (section) {
+				case 'work':
+					draft.work = work.map((el) =>
+						el.companyName === oldCardName ? newCard : el,
+					);
+					break;
+				case 'education':
+					draft.education = education.map((el) =>
+						el.establishment === oldCardName ? newCard : el,
+					);
+					break;
 			}
 		});
 	}
@@ -48,25 +43,21 @@ function App() {
 					draft.education.push(newCard);
 					break;
 			}
-
-			// section === 'work'
-			// 	? draft.work.push(newCard)
-			// 	: draft.education.push(newCard);
 		});
 	}
 
-	function deleteWorkCard(companyName) {
+	function deleteCard(name, section) {
 		updatePortfolio((draft) => {
-			draft.work = draft.work.filter((el) => el.companyName !== companyName);
-		});
-	}
-
-	// Объединить с функцией выше
-	function deleteEducationCard(establishmentName) {
-		updatePortfolio((draft) => {
-			draft.education = draft.education.filter(
-				(el) => el.establishment !== establishmentName,
-			);
+			switch (section) {
+				case 'work':
+					draft.work = draft.work.filter((el) => el.companyName !== name);
+					break;
+				case 'education':
+					draft.education = draft.education.filter(
+						(el) => el.establishment !== name,
+					);
+					break;
+			}
 		});
 	}
 
@@ -75,13 +66,11 @@ function App() {
 			<EditingPanel
 				onTogglePreview={handleTogglePreview}
 				onPortfolioChange={handlePortfolioMainChange}
-				onDeleteWorkCard={deleteWorkCard}
-				onUpdateWorkCard={updateWorkCard}
+				onDeleteCard={deleteCard}
+				onUpdateCard={updateCard}
 				onAddCard={addCard}
 				works={portfolio.work}
 				educations={portfolio.education}
-				onDeleteEducationCard={deleteEducationCard}
-				onUpdateEducationCard={updateEducationCard}
 			/>
 			{show && (
 				<PreviewPanel
@@ -100,7 +89,7 @@ const initialContacts = {
 	mainField: {
 		name: 'Dmitrii',
 		email: 'neasit3@gmail.com',
-		phone: '8-923-348-65-68',
+		phone: '8-923-343-32-12',
 		speciality: 'Frontend Software Engineer',
 		address: 'Russia, Krasnoyarsk',
 		link: 'https://kotovar.github.io/Homepage/',
@@ -123,7 +112,7 @@ const initialContacts = {
 	],
 	education: [
 		{
-			establishment: 'Siberian State Technological University, Krasnoyarsk',
+			establishment: 'Siberian State Technological University',
 			degree: 'Specialist Degree',
 			startOfEducation: '2008',
 			endOfEducation: '2013',
