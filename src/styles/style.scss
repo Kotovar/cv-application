@@ -176,3 +176,14 @@
 		border-radius: 5px;
 	}
 }
+
+.extra-section {
+	border-bottom: 3px solid black;
+	min-height: 10vh;
+	width: 95%;
+	margin-inline: auto;
+
+	h1 {
+		text-align: center;
+	}
+}

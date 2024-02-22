@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function PreviewPanel({contacts, works, educations, skills}) {
+function PreviewPanel({contacts, works, educations, skills, extra}) {
 	const worksList = works.map((work) => (
 		<div key={work.companyName} className="preview__work-card">
 			<div className="preview__work-card__left">
@@ -88,6 +88,10 @@ function PreviewPanel({contacts, works, educations, skills}) {
 				<h1>Skills</h1>
 				<div className="skills-section-list">{skillsList}</div>
 			</div>
+			<div className="extra-section">
+				<h1>Additional Information</h1>
+				<div className="extra-section-list">{extra}</div>
+			</div>
 		</div>
 	);
 }
@@ -107,4 +111,5 @@ PreviewPanel.propTypes = {
 	works: PropTypes.array.isRequired,
 	educations: PropTypes.array.isRequired,
 	skills: PropTypes.array.isRequired,
+	extra: PropTypes.string.isRequired,
 };

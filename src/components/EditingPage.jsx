@@ -29,7 +29,7 @@ function EditingPanel(props) {
 				onDeleteCard={props.onDeleteCard}
 				onAddCard={props.onAddCard}
 			/>
-			<ExtraPanel />
+			<ExtraPanel extra={props.extra} onUpdateCard={props.onUpdateCard} />
 		</div>
 	);
 }
@@ -43,6 +43,8 @@ EditingPanel.propTypes = {
 	works: PropTypes.array,
 	educations: PropTypes.array,
 	skills: PropTypes.array,
+
+	extra: PropTypes.string,
 };
 
 export default EditingPanel;

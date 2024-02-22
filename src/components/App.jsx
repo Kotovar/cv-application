@@ -29,6 +29,9 @@ function App() {
 						el.establishment === oldCardName ? newCard : el,
 					);
 					break;
+				case 'extra':
+					draft.extra = newCard;
+					break;
 			}
 		});
 	}
@@ -78,6 +81,7 @@ function App() {
 				works={portfolio.work}
 				educations={portfolio.education}
 				skills={portfolio.skills}
+				extra={portfolio.extra}
 			/>
 			{show && (
 				<PreviewPanel
@@ -85,6 +89,7 @@ function App() {
 					works={portfolio.work}
 					educations={portfolio.education}
 					skills={portfolio.skills}
+					extra={portfolio.extra}
 				/>
 			)}
 		</>
@@ -128,4 +133,6 @@ const initialContacts = {
 		},
 	],
 	skills: ['javaScript', 'Html', 'Css', 'Css', 'Webpack'],
+	extra:
+		'Focused on professional growth in frontend development, I am dedicated to self-learning through resources like roadmap.sh/frontend and The Odin Project.',
 };
