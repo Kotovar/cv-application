@@ -14,7 +14,10 @@ function WorkInformationPanel(props) {
 	};
 
 	const worksList = props.works.map((work) => (
-		<button key={work.companyName} onClick={() => setCurrentCard(work)}>
+		<button
+			key={work.companyName + work.jobPosition}
+			onClick={() => setCurrentCard(work)}
+		>
 			{work.companyName}
 		</button>
 	));

@@ -1,5 +1,5 @@
-import EditingPanel from './EditingPanel';
-import PreviewPanel from './PreviewPanel';
+import EditingPanel from './EditingPage';
+import PreviewPanel from './PreviewPage';
 import {useState} from 'react';
 import {useImmer} from 'use-immer';
 
@@ -27,15 +27,46 @@ function App() {
 		});
 	}
 
-	function addWorkCard(newCard) {
+	// Объединить с функцией выше
+	function updateEducationCard(oldCardName, newCard) {
 		updatePortfolio((draft) => {
-			draft.work.push(newCard);
+			for (let i = 0; i < draft.education.length; i++) {
+				if (draft.education[i].establishment === oldCardName) {
+					draft.education[i] = newCard;
+				}
+			}
+		});
+	}
+
+	function addCard(newCard, section) {
+		updatePortfolio((draft) => {
+			switch (section) {
+				case 'work':
+					draft.work.push(newCard);
+					break;
+				case 'education':
+					draft.education.push(newCard);
+					break;
+			}
+
+			// section === 'work'
+			// 	? draft.work.push(newCard)
+			// 	: draft.education.push(newCard);
 		});
 	}
 
 	function deleteWorkCard(companyName) {
 		updatePortfolio((draft) => {
 			draft.work = draft.work.filter((el) => el.companyName !== companyName);
+		});
+	}
+
+	// Объединить с функцией выше
+	function deleteEducationCard(establishmentName) {
+		updatePortfolio((draft) => {
+			draft.education = draft.education.filter(
+				(el) => el.establishment !== establishmentName,
+			);
 		});
 	}
 
@@ -46,11 +77,18 @@ function App() {
 				onPortfolioChange={handlePortfolioMainChange}
 				onDeleteWorkCard={deleteWorkCard}
 				onUpdateWorkCard={updateWorkCard}
-				onAddWorkCard={addWorkCard}
+				onAddCard={addCard}
 				works={portfolio.work}
+				educations={portfolio.education}
+				onDeleteEducationCard={deleteEducationCard}
+				onUpdateEducationCard={updateEducationCard}
 			/>
 			{show && (
-				<PreviewPanel contacts={portfolio.mainField} works={portfolio.work} />
+				<PreviewPanel
+					contacts={portfolio.mainField}
+					works={portfolio.work}
+					educations={portfolio.education}
+				/>
 			)}
 		</>
 	);

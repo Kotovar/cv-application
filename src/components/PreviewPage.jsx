@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function PreviewPanel({contacts, works}) {
+function PreviewPanel({contacts, works, educations}) {
 	const worksList = works.map((work) => (
 		<div key={work.companyName} className="preview__work-card">
 			<div className="preview__work-card__left">
@@ -17,6 +17,34 @@ function PreviewPanel({contacts, works}) {
 				<p className="review__work-card__right_job">{work.jobPosition}</p>
 				<p className="review__work-card__right_responsibilities">
 					{work.workplaceResponsibilities}
+				</p>
+			</div>
+		</div>
+	));
+
+	const educationList = educations.map((education) => (
+		<div
+			key={education.establishment + education.degree}
+			className="preview__education-card"
+		>
+			<div className="preview__education-card__left">
+				<div className="preview__education-card__start_data">
+					<p>{education.startOfEducation}</p>
+				</div>
+				<div className="preview__education-card__end_data">
+					<p>{education.endOfEducation}</p>
+				</div>
+			</div>
+
+			<div className="preview__education-card__right">
+				<p className="preview__education-card__right_degree">
+					{education.degree}
+				</p>
+				<p className="preview__education-card__right_establishment">
+					{education.establishment}
+				</p>
+				<p className="preview__education-card__right_location">
+					{education.location}
 				</p>
 			</div>
 		</div>
@@ -44,6 +72,10 @@ function PreviewPanel({contacts, works}) {
 				<h1>Work experience</h1>
 				{worksList}
 			</div>
+			<div className="education-section">
+				<h1>Education</h1>
+				{educationList}
+			</div>
 		</div>
 	);
 }
@@ -61,4 +93,5 @@ PreviewPanel.propTypes = {
 	}).isRequired,
 
 	works: PropTypes.array.isRequired,
+	educations: PropTypes.array.isRequired,
 };

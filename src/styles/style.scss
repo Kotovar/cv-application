@@ -23,6 +23,10 @@
 	min-height: 10vh;
 	width: 90%;
 	margin-inline: auto;
+
+	h1 {
+		text-align: center;
+	}
 }
 
 .buttonPanel {
@@ -39,7 +43,8 @@
 }
 
 // стиль для раздела с добавлением карточек работы
-.workInformationPanel {
+.workInformationPanel,
+.educationInformationPanel {
 	display: flex;
 	flex-direction: column;
 
@@ -78,6 +83,25 @@
 	}
 
 	.preview__work-card {
+		border: 2px solid black;
+		min-height: 10vh;
+		display: grid;
+		grid-template-columns: 30% 1fr;
+		align-items: center;
+	}
+}
+
+.education-section {
+	border-bottom: 3px solid black;
+	min-height: 10vh;
+	width: 95%;
+	margin-inline: auto;
+
+	h1 {
+		text-align: center;
+	}
+
+	.preview__education-card {
 		border: 2px solid black;
 		min-height: 10vh;
 		display: grid;

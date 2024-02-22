@@ -21,7 +21,7 @@ function WorkCard({
 			onUpdateWorkCard(work.companyName, newCard);
 			onCloseWorkCard();
 		} else if (newCard.companyName) {
-			onAddWorkCard(newCard), onCloseWorkCard();
+			onAddWorkCard(newCard, 'work'), onCloseWorkCard();
 		}
 	}
 
