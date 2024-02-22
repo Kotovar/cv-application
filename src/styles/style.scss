@@ -31,7 +31,8 @@
 .educationInformationPanel,
 .skillsPanel,
 .work,
-.education {
+.education,
+.extraPanel {
 	border: 3px solid black;
 	min-height: 10vh;
 	width: 90%;
@@ -83,6 +84,18 @@
 		max-width: 30%;
 		margin-inline: auto;
 	}
+}
+
+// поле ввода дополнительной информации
+.extraPanel {
+	display: flex;
+	flex-direction: column;
+}
+
+.extraPanelInput {
+	max-width: 90%;
+	margin-inline: 16px;
+	margin-bottom: 32px;
 }
 
 #root {

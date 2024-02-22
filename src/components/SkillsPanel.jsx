@@ -9,14 +9,17 @@ function SkillsPanel(props) {
 
 	const [newSkill, updateNewSkill] = useImmer('');
 
-	const enteringSkill = (value) => updateNewSkill(() => value);
+	const enteringSkill = (value) => updateNewSkill(value);
 
 	function updateCard() {
-		props.onAddCard(newSkill, 'skill');
+		props.skills.includes(newSkill)
+			? null
+			: (props.onAddCard(newSkill, 'skill'), updateNewSkill(''));
 	}
 
 	return (
 		<div className="skillsPanel">
+			<h1>Skills</h1>
 			<div className="skillsPanel__list">{skillList}</div>
 			<div className="skillsPanel__inputField">
 				<form onSubmit={(e) => e.preventDefault()}>
@@ -25,6 +28,7 @@ function SkillsPanel(props) {
 						className="skillsPanel__input input_field"
 						placeholder="Skill such as javascript or learning ability"
 						onChange={(e) => enteringSkill(e.target.value)}
+						value={newSkill}
 					/>
 					<button onClick={updateCard} disabled={!newSkill}>
 						✓

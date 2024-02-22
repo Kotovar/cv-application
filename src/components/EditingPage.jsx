@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MainInformationPanel from './MainPanel';
 import CardList from './CardList';
 import SkillsPanel from './SkillsPanel';
+import ExtraPanel from './ExtraPanel';
 
 function EditingPanel(props) {
 	return (
@@ -28,6 +29,7 @@ function EditingPanel(props) {
 				onDeleteCard={props.onDeleteCard}
 				onAddCard={props.onAddCard}
 			/>
+			<ExtraPanel />
 		</div>
 	);
 }
