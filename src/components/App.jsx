@@ -42,6 +42,9 @@ function App() {
 				case 'education':
 					draft.education.push(newCard);
 					break;
+				case 'skill':
+					draft.skills.push(newCard);
+					break;
 			}
 		});
 	}

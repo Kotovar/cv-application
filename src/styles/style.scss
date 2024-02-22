@@ -15,10 +15,6 @@
 	border: 3px solid green;
 }
 
-.skillsPanel__list {
-	min-height: 5vh;
-}
-
 .skillsPanel__inputField {
 	form {
 		display: flex;
@@ -39,6 +35,7 @@
 	border: 3px solid black;
 	min-height: 10vh;
 	width: 90%;
+	max-width: 90%;
 	margin-inline: auto;
 
 	h1 {
@@ -61,8 +58,10 @@
 
 .skillsPanel__list {
 	display: flex;
-	column-gap: 8px;
+	gap: 8px;
 	margin: 8px;
+	min-height: 5vh;
+	flex-wrap: wrap;
 }
 // карточка заполнения скила
 .skillCard {
@@ -155,7 +154,9 @@
 
 .skills-section-list {
 	display: flex;
-	column-gap: 16px;
+	gap: 16px;
+	flex-wrap: wrap;
+
 	.skills-section-card {
 		border: 2px solid black;
 		padding: 8px 16px;

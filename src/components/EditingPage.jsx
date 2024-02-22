@@ -23,7 +23,11 @@ function EditingPanel(props) {
 				onUpdateCard={props.onUpdateCard}
 				onAddCard={props.onAddCard}
 			/>
-			<SkillsPanel skills={props.skills} onDeleteCard={props.onDeleteCard} />
+			<SkillsPanel
+				skills={props.skills}
+				onDeleteCard={props.onDeleteCard}
+				onAddCard={props.onAddCard}
+			/>
 		</div>
 	);
 }
