@@ -8,7 +8,10 @@ import ExtraPanel from './ExtraPanel';
 function EditingPanel(props) {
 	return (
 		<div className="editor">
-			<ButtonsPanel onTogglePreview={props.onTogglePreview} />
+			<ButtonsPanel
+				onTogglePreview={props.onTogglePreview}
+				onResetResume={props.onResetResume}
+			/>
 			<MainInformationPanel onPortfolioChange={props.onPortfolioChange} />
 			<CardList
 				cards={props.works}
@@ -40,6 +43,7 @@ EditingPanel.propTypes = {
 	onDeleteCard: PropTypes.func.isRequired,
 	onUpdateCard: PropTypes.func.isRequired,
 	onAddCard: PropTypes.func.isRequired,
+	onResetResume: PropTypes.func.isRequired,
 	works: PropTypes.array,
 	educations: PropTypes.array,
 	skills: PropTypes.array,

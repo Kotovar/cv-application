@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import {useImmer} from 'use-immer';
+// import {useEffect} from 'react';
 
 function ExtraPanel({extra, onUpdateCard}) {
 	const [newExtra, updateExtra] = useImmer(extra);
-
 	const enteringExtra = (value) => (
 		updateExtra(value), onUpdateCard('', newExtra, 'extra')
 	);
-
 	return (
 		<div className="extraPanel">
 			<h1>Additional Information</h1>

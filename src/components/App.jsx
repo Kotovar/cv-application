@@ -9,6 +9,8 @@ function App() {
 
 	const handleTogglePreview = () => setShow(!show);
 
+	const resetResume = () => updatePortfolio(emptyResume);
+
 	function handlePortfolioMainChange(property, value) {
 		updatePortfolio((draft) => {
 			draft.mainField[property] = value;
@@ -78,6 +80,7 @@ function App() {
 				onDeleteCard={deleteCard}
 				onUpdateCard={updateCard}
 				onAddCard={addCard}
+				onResetResume={resetResume}
 				works={portfolio.work}
 				educations={portfolio.education}
 				skills={portfolio.skills}
@@ -135,4 +138,19 @@ const initialContacts = {
 	skills: ['javaScript', 'Html', 'Css', 'Css', 'Webpack'],
 	extra:
 		'Focused on professional growth in frontend development, I am dedicated to self-learning through resources like roadmap.sh/frontend and The Odin Project.',
+};
+
+const emptyResume = {
+	mainField: {
+		name: '',
+		email: '',
+		phone: '',
+		speciality: '',
+		address: '',
+		link: '',
+	},
+	work: [],
+	education: [],
+	skills: [],
+	extra: '',
 };

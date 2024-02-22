@@ -4,7 +4,7 @@ function ButtonsPanel(props) {
 	return (
 		<div className="buttonPanel">
 			<button onClick={props.onTogglePreview}>Свернуть превью</button>
-			<button>Очистить резюме</button>
+			<button onClick={props.onResetResume}>Очистить резюме</button>
 			<button>Выгрузить в pdf</button>
 		</div>
 	);
@@ -12,6 +12,7 @@ function ButtonsPanel(props) {
 
 ButtonsPanel.propTypes = {
 	onTogglePreview: PropTypes.func.isRequired,
+	onResetResume: PropTypes.func.isRequired,
 };
 
 export default ButtonsPanel;
