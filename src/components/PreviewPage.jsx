@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function PreviewPanel({contacts, works, educations, skills, extra}) {
+function PreviewPanel({contacts, works, educations, skills, extra, image}) {
 	const worksList = works.map((work) => (
 		<div key={work.companyName} className="preview__work-card">
 			<div className="preview__work-card__left">
@@ -60,7 +60,15 @@ function PreviewPanel({contacts, works, educations, skills, extra}) {
 		<div className="preview">
 			<div className="preview__main">
 				<div className="preview__main__avatar">
-					<img src="../../public/images/avatar.jpg" alt="avatar" />
+					{/* <img src="../../public/images/avatar.jpg" alt="avatar" /> */}
+					<img
+						src={
+							image
+								? URL.createObjectURL(image)
+								: '../../public/images/avatar.jpg'
+						}
+						alt="avatar"
+					/>
 				</div>
 				<div className="preview-left">
 					<h1 className="preview-left__name">{contacts.name}</h1>
@@ -110,4 +118,5 @@ PreviewPanel.propTypes = {
 	educations: PropTypes.array.isRequired,
 	skills: PropTypes.array.isRequired,
 	extra: PropTypes.string.isRequired,
+	image: PropTypes.instanceOf(File),
 };

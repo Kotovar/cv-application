@@ -6,10 +6,15 @@ import {useImmer} from 'use-immer';
 function App() {
 	const [show, setShow] = useState(true);
 	const [portfolio, updatePortfolio] = useImmer(initialContacts);
+	const [image, setImage] = useState(null);
 
 	const handleTogglePreview = () => setShow(!show);
 
-	const resetResume = () => updatePortfolio(emptyResume);
+	const resetResume = () => (updatePortfolio(emptyResume), loadAvatar(null));
+
+	const loadExample = () => updatePortfolio(initialContacts);
+
+	const loadAvatar = (value) => setImage(value);
 
 	function handlePortfolioMainChange(property, value) {
 		updatePortfolio((draft) => {
@@ -77,15 +82,18 @@ function App() {
 			<EditingPanel
 				onTogglePreview={handleTogglePreview}
 				onPortfolioChange={handlePortfolioMainChange}
+				onLoadAvatar={loadAvatar}
 				onDeleteCard={deleteCard}
 				onUpdateCard={updateCard}
 				onAddCard={addCard}
 				onResetResume={resetResume}
+				onLoadExample={loadExample}
 				works={portfolio.work}
 				educations={portfolio.education}
 				skills={portfolio.skills}
 				extra={portfolio.extra}
 				mainField={portfolio.mainField}
+				isShowResume={show}
 			/>
 			{show && (
 				<PreviewPanel
@@ -94,6 +102,7 @@ function App() {
 					educations={portfolio.education}
 					skills={portfolio.skills}
 					extra={portfolio.extra}
+					image={image}
 				/>
 			)}
 		</>

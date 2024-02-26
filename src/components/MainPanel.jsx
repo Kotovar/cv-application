@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function MainInformationPanel({onPortfolioChange, mainField}) {
+function MainInformationPanel({onPortfolioChange, mainField, onLoadAvatar}) {
 	return (
 		<div className="mainInformationPanel">
 			<h1>Personal information</h1>
@@ -63,7 +63,19 @@ function MainInformationPanel({onPortfolioChange, mainField}) {
 				</form>
 			</div>
 			<div className="mainInformationPanel__buttons">
-				<button>Загрузить фото</button>
+				<label htmlFor="inputImg" className="labelForFile">
+					Загрузить фото
+				</label>
+				<input
+					id="inputImg"
+					type="file"
+					name="inputImg"
+					onChange={(e) => {
+						if (e.target.files.length > 0) {
+							onLoadAvatar(e.target.files[0]);
+						}
+					}}
+				/>
 			</div>
 		</div>
 	);
@@ -72,7 +84,8 @@ function MainInformationPanel({onPortfolioChange, mainField}) {
 export default MainInformationPanel;
 
 MainInformationPanel.propTypes = {
-	onPortfolioChange: PropTypes.func.isRequired,
+	onPortfolioChange: PropTypes.func,
+	onLoadAvatar: PropTypes.func,
 	mainField: PropTypes.shape({
 		name: PropTypes.string,
 		email: PropTypes.string,

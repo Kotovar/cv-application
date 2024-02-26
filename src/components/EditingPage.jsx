@@ -11,10 +11,13 @@ function EditingPanel(props) {
 			<ButtonsPanel
 				onTogglePreview={props.onTogglePreview}
 				onResetResume={props.onResetResume}
+				onLoadExample={props.onLoadExample}
+				isShowResume={props.isShowResume}
 			/>
 			<MainInformationPanel
 				onPortfolioChange={props.onPortfolioChange}
 				mainField={props.mainField}
+				onLoadAvatar={props.onLoadAvatar}
 			/>
 			<CardList
 				cards={props.works}
@@ -41,12 +44,14 @@ function EditingPanel(props) {
 }
 
 EditingPanel.propTypes = {
-	onTogglePreview: PropTypes.func.isRequired,
-	onPortfolioChange: PropTypes.func.isRequired,
-	onDeleteCard: PropTypes.func.isRequired,
-	onUpdateCard: PropTypes.func.isRequired,
-	onAddCard: PropTypes.func.isRequired,
-	onResetResume: PropTypes.func.isRequired,
+	onTogglePreview: PropTypes.func,
+	onPortfolioChange: PropTypes.func,
+	onDeleteCard: PropTypes.func,
+	onUpdateCard: PropTypes.func,
+	onAddCard: PropTypes.func,
+	onResetResume: PropTypes.func,
+	onLoadExample: PropTypes.func,
+	onLoadAvatar: PropTypes.func,
 	works: PropTypes.array,
 	educations: PropTypes.array,
 	skills: PropTypes.array,
@@ -54,6 +59,7 @@ EditingPanel.propTypes = {
 	mainField: PropTypes.object,
 
 	extra: PropTypes.string,
+	isShowResume: PropTypes.bool,
 };
 
 export default EditingPanel;

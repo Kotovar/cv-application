@@ -187,3 +187,21 @@
 		text-align: center;
 	}
 }
+
+// стилизация загрузки фото
+#inputImg {
+	display: none;
+}
+
+.labelForFile {
+	border: 1px solid black;
+	padding: 2px;
+}
+
+.preview__main__avatar {
+	img {
+		border-radius: 50%;
+		height: 100px;
+		width: 100px;
+	}
+}
