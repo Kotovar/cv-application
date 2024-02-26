@@ -12,7 +12,10 @@ function EditingPanel(props) {
 				onTogglePreview={props.onTogglePreview}
 				onResetResume={props.onResetResume}
 			/>
-			<MainInformationPanel onPortfolioChange={props.onPortfolioChange} />
+			<MainInformationPanel
+				onPortfolioChange={props.onPortfolioChange}
+				mainField={props.mainField}
+			/>
 			<CardList
 				cards={props.works}
 				cardType="work"
@@ -47,6 +50,8 @@ EditingPanel.propTypes = {
 	works: PropTypes.array,
 	educations: PropTypes.array,
 	skills: PropTypes.array,
+
+	mainField: PropTypes.object,
 
 	extra: PropTypes.string,
 };

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function MainInformationPanel({onPortfolioChange}) {
+function MainInformationPanel({onPortfolioChange, mainField}) {
 	return (
 		<div className="mainInformationPanel">
 			<h1>Personal information</h1>
@@ -12,6 +12,7 @@ function MainInformationPanel({onPortfolioChange}) {
 							type="text"
 							id="name"
 							onChange={(e) => onPortfolioChange('name', e.target.value)}
+							value={mainField.name}
 						/>
 					</div>
 					<div className="input_field">
@@ -20,6 +21,7 @@ function MainInformationPanel({onPortfolioChange}) {
 							type="email"
 							id="email"
 							onChange={(e) => onPortfolioChange('email', e.target.value)}
+							value={mainField.email}
 						/>
 					</div>
 					<div className="input_field">
@@ -28,6 +30,7 @@ function MainInformationPanel({onPortfolioChange}) {
 							type="tel"
 							id="phone"
 							onChange={(e) => onPortfolioChange('phone', e.target.value)}
+							value={mainField.phone}
 						/>
 					</div>
 					<div className="input_field">
@@ -36,6 +39,7 @@ function MainInformationPanel({onPortfolioChange}) {
 							type="text"
 							id="speciality"
 							onChange={(e) => onPortfolioChange('speciality', e.target.value)}
+							value={mainField.speciality}
 						/>
 					</div>
 					<div className="input_field">
@@ -44,6 +48,7 @@ function MainInformationPanel({onPortfolioChange}) {
 							type="text"
 							id="address"
 							onChange={(e) => onPortfolioChange('address', e.target.value)}
+							value={mainField.address}
 						/>
 					</div>
 					<div className="input_field">
@@ -52,6 +57,7 @@ function MainInformationPanel({onPortfolioChange}) {
 							type="url"
 							id="link"
 							onChange={(e) => onPortfolioChange('link', e.target.value)}
+							value={mainField.link}
 						/>
 					</div>
 				</form>
@@ -67,4 +73,12 @@ export default MainInformationPanel;
 
 MainInformationPanel.propTypes = {
 	onPortfolioChange: PropTypes.func.isRequired,
+	mainField: PropTypes.shape({
+		name: PropTypes.string,
+		email: PropTypes.string,
+		phone: PropTypes.string,
+		speciality: PropTypes.string,
+		address: PropTypes.string,
+		link: PropTypes.string,
+	}),
 };

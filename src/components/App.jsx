@@ -85,6 +85,7 @@ function App() {
 				educations={portfolio.education}
 				skills={portfolio.skills}
 				extra={portfolio.extra}
+				mainField={portfolio.mainField}
 			/>
 			{show && (
 				<PreviewPanel
@@ -135,7 +136,7 @@ const initialContacts = {
 			location: 'Russia, Krasnoyarsk',
 		},
 	],
-	skills: ['javaScript', 'Html', 'Css', 'Css', 'Webpack'],
+	skills: ['javaScript', 'Html', 'Css', 'Webpack'],
 	extra:
 		'Focused on professional growth in frontend development, I am dedicated to self-learning through resources like roadmap.sh/frontend and The Odin Project.',
 };

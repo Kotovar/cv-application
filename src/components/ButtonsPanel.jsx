@@ -5,6 +5,7 @@ function ButtonsPanel(props) {
 		<div className="buttonPanel">
 			<button onClick={props.onTogglePreview}>Свернуть превью</button>
 			<button onClick={props.onResetResume}>Очистить резюме</button>
+			<button>Показать пример</button>
 			<button>Выгрузить в pdf</button>
 		</div>
 	);

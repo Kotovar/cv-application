@@ -50,13 +50,11 @@ function PreviewPanel({contacts, works, educations, skills, extra}) {
 		</div>
 	));
 
-	// Убрать если в объекте уже будет проверка через Set
-	const skillsList = Array.from(new Set(skills)).map((skill) => (
+	const skillsList = skills.map((skill) => (
 		<div key={skill} className="skills-section-card">
 			<div>{skill}</div>
 		</div>
 	));
-	// Убрать если в объекте уже будет проверка через Set
 
 	return (
 		<div className="preview">
