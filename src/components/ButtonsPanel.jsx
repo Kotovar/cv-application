@@ -8,8 +8,7 @@ function ButtonsPanel(props) {
 			</button>
 			<button onClick={props.onResetResume}>Clear Resume</button>
 			<button onClick={props.onLoadExample}>Load example</button>
-
-			<button>Upload to pdf</button>
+			<button onClick={window.print}>Upload to pdf</button>
 		</div>
 	);
 }

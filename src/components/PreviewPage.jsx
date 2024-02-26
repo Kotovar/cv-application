@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import {useEffect} from 'react';
+import {useState} from 'react';
 
 function PreviewPanel({
 	contacts,
@@ -9,6 +11,21 @@ function PreviewPanel({
 	image,
 	onLoadAvatar,
 }) {
+	const defaultUrl = '../../public/images/avatar.jpg';
+	const [imageUrl, setImageUrl] = useState(defaultUrl);
+
+	useEffect(() => {
+		if (image) {
+			setImageUrl(URL.createObjectURL(image));
+		}
+
+		if (image && imageUrl !== defaultUrl) {
+			return () => {
+				URL.revokeObjectURL(imageUrl);
+			};
+		}
+	}, [image]);
+
 	const worksList = works.map((work) => (
 		<div key={work.companyName} className="preview__work-card">
 			<div className="preview__work-card__left">
@@ -67,18 +84,11 @@ function PreviewPanel({
 	return (
 		<div className="preview">
 			<div className="preview__main">
-				<label htmlFor="inputImgPrew" className="labelForFile">
-					<div className="preview__main__avatar">
-						<img
-							src={
-								image
-									? URL.createObjectURL(image)
-									: '../../public/images/avatar.jpg'
-							}
-							alt="avatar"
-						/>
-					</div>
-				</label>
+				{/* <label htmlFor="inputImgPrew" className="labelForFile"> */}
+				<div className="preview__main__avatar">
+					<img src={imageUrl} alt="avatar" />
+				</div>
+				{/* </label>
 				<input
 					id="inputImgPrew"
 					type="file"
@@ -89,7 +99,7 @@ function PreviewPanel({
 							onLoadAvatar(e.target.files[0]);
 						}
 					}}
-				/>
+				/> */}
 				<div className="preview-left">
 					<h1 className="preview-left__name">{contacts.name}</h1>
 					<p className="preview-left__speciality">{contacts.speciality}</p>
