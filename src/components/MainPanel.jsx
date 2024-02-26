@@ -63,13 +63,14 @@ function MainInformationPanel({onPortfolioChange, mainField, onLoadAvatar}) {
 				</form>
 			</div>
 			<div className="mainInformationPanel__buttons">
-				<label htmlFor="inputImg" className="labelForFile">
+				<label htmlFor="inputImg" className="labelForFile labelBorder">
 					Загрузить фото
 				</label>
 				<input
 					id="inputImg"
 					type="file"
 					name="inputImg"
+					accept=".jpg, .jpeg, .png, .webp, image/jpeg, image/png, image/webp"
 					onChange={(e) => {
 						if (e.target.files.length > 0) {
 							onLoadAvatar(e.target.files[0]);

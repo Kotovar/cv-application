@@ -1,6 +1,14 @@
 import PropTypes from 'prop-types';
 
-function PreviewPanel({contacts, works, educations, skills, extra, image}) {
+function PreviewPanel({
+	contacts,
+	works,
+	educations,
+	skills,
+	extra,
+	image,
+	onLoadAvatar,
+}) {
 	const worksList = works.map((work) => (
 		<div key={work.companyName} className="preview__work-card">
 			<div className="preview__work-card__left">
@@ -59,17 +67,29 @@ function PreviewPanel({contacts, works, educations, skills, extra, image}) {
 	return (
 		<div className="preview">
 			<div className="preview__main">
-				<div className="preview__main__avatar">
-					{/* <img src="../../public/images/avatar.jpg" alt="avatar" /> */}
-					<img
-						src={
-							image
-								? URL.createObjectURL(image)
-								: '../../public/images/avatar.jpg'
+				<label htmlFor="inputImgPrew" className="labelForFile">
+					<div className="preview__main__avatar">
+						<img
+							src={
+								image
+									? URL.createObjectURL(image)
+									: '../../public/images/avatar.jpg'
+							}
+							alt="avatar"
+						/>
+					</div>
+				</label>
+				<input
+					id="inputImgPrew"
+					type="file"
+					name="inputImg"
+					accept=".jpg, .jpeg, .png, .webp, image/jpeg, image/png, image/webp"
+					onChange={(e) => {
+						if (e.target.files.length > 0) {
+							onLoadAvatar(e.target.files[0]);
 						}
-						alt="avatar"
-					/>
-				</div>
+					}}
+				/>
 				<div className="preview-left">
 					<h1 className="preview-left__name">{contacts.name}</h1>
 					<p className="preview-left__speciality">{contacts.speciality}</p>
@@ -106,17 +126,18 @@ export default PreviewPanel;
 
 PreviewPanel.propTypes = {
 	contacts: PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		email: PropTypes.string.isRequired,
-		phone: PropTypes.string.isRequired,
-		speciality: PropTypes.string.isRequired,
-		address: PropTypes.string.isRequired,
-		link: PropTypes.string.isRequired,
+		name: PropTypes.string,
+		email: PropTypes.string,
+		phone: PropTypes.string,
+		speciality: PropTypes.string,
+		address: PropTypes.string,
+		link: PropTypes.string,
 	}).isRequired,
 
-	works: PropTypes.array.isRequired,
-	educations: PropTypes.array.isRequired,
-	skills: PropTypes.array.isRequired,
-	extra: PropTypes.string.isRequired,
+	works: PropTypes.array,
+	educations: PropTypes.array,
+	skills: PropTypes.array,
+	extra: PropTypes.string,
 	image: PropTypes.instanceOf(File),
+	onLoadAvatar: PropTypes.func,
 };

@@ -189,11 +189,12 @@
 }
 
 // стилизация загрузки фото
-#inputImg {
+#inputImg,
+#inputImgPrew {
 	display: none;
 }
 
-.labelForFile {
+.labelBorder {
 	border: 1px solid black;
 	padding: 2px;
 }

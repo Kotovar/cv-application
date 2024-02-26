@@ -100,6 +100,7 @@ function App() {
 					contacts={portfolio.mainField}
 					works={portfolio.work}
 					educations={portfolio.education}
+					onLoadAvatar={loadAvatar}
 					skills={portfolio.skills}
 					extra={portfolio.extra}
 					image={image}
