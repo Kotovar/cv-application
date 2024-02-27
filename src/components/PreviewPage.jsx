@@ -11,15 +11,15 @@ function PreviewPanel({
 	image,
 	onLoadAvatar,
 }) {
-	const defaultUrl = '../../public/images/avatar.jpg';
-	const [imageUrl, setImageUrl] = useState(defaultUrl);
+	const [imageUrl, setImageUrl] = useState('../../public/images/avatar.jpg');
 
 	useEffect(() => {
-		if (image) {
-			setImageUrl(URL.createObjectURL(image));
-		}
+		let newUrl;
 
-		if (image && imageUrl !== defaultUrl) {
+		if (image) {
+			newUrl = URL.createObjectURL(image);
+			setImageUrl(newUrl);
+
 			return () => {
 				URL.revokeObjectURL(imageUrl);
 			};
