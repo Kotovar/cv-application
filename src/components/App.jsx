@@ -2,15 +2,25 @@ import EditingPanel from './EditingPage';
 import PreviewPanel from './PreviewPage';
 import {useState} from 'react';
 import {useImmer} from 'use-immer';
+import defaultImage from '/public/images/avatar.jpg';
+import {useRef} from 'react';
 
 function App() {
 	const [show, setShow] = useState(true);
+	const [image, setImage] = useState(defaultImage);
 	const [portfolio, updatePortfolio] = useImmer(initialContacts);
-	const [image, setImage] = useState(null);
+	const inputImgPrevRef = useRef(null);
+	const inputImgRef = useRef(null);
 
 	const handleTogglePreview = () => setShow(!show);
 
-	const resetResume = () => (updatePortfolio(emptyResume), loadAvatar(null));
+	const resetResume = () => {
+		updatePortfolio(emptyResume);
+		loadAvatar(defaultImage);
+
+		inputImgPrevRef.current.value &&= '';
+		inputImgRef.current.value &&= '';
+	};
 
 	const loadExample = () => updatePortfolio(initialContacts);
 
@@ -94,6 +104,7 @@ function App() {
 				extra={portfolio.extra}
 				mainField={portfolio.mainField}
 				isShowResume={show}
+				inputImgRef={inputImgRef}
 			/>
 			{show && (
 				<PreviewPanel
@@ -104,6 +115,7 @@ function App() {
 					skills={portfolio.skills}
 					extra={portfolio.extra}
 					image={image}
+					inputImgPrevRef={inputImgPrevRef}
 				/>
 			)}
 		</>

@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 
-function MainInformationPanel({onPortfolioChange, mainField, onLoadAvatar}) {
+function MainInformationPanel({
+	onPortfolioChange,
+	mainField,
+	onLoadAvatar,
+	inputImgRef,
+}) {
 	return (
 		<div className="mainInformationPanel">
 			<h1>Personal information</h1>
@@ -76,6 +81,7 @@ function MainInformationPanel({onPortfolioChange, mainField, onLoadAvatar}) {
 							onLoadAvatar(e.target.files[0]);
 						}
 					}}
+					ref={inputImgRef}
 				/>
 			</div>
 		</div>
@@ -95,4 +101,5 @@ MainInformationPanel.propTypes = {
 		address: PropTypes.string,
 		link: PropTypes.string,
 	}),
+	inputImgRef: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };

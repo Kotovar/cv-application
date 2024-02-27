@@ -10,19 +10,27 @@ function PreviewPanel({
 	extra,
 	image,
 	onLoadAvatar,
+	inputImgPrevRef,
 }) {
-	const [imageUrl, setImageUrl] = useState('../../public/images/avatar.jpg');
+	const [imageUrl, setImageUrl] = useState(null);
 
 	useEffect(() => {
 		let newUrl;
 
 		if (image) {
-			newUrl = URL.createObjectURL(image);
-			setImageUrl(newUrl);
+			if (typeof image === 'string') {
+				setImageUrl(image);
+				if (newUrl) {
+					URL.revokeObjectURL(newUrl);
+				}
+			} else {
+				newUrl = URL.createObjectURL(image);
+				setImageUrl(newUrl);
 
-			return () => {
-				URL.revokeObjectURL(newUrl);
-			};
+				return () => {
+					URL.revokeObjectURL(newUrl);
+				};
+			}
 		}
 	}, [image]);
 
@@ -84,21 +92,22 @@ function PreviewPanel({
 	return (
 		<div className="preview">
 			<div className="preview__main">
-				<label htmlFor="inputImgPrew" className="labelForFile">
+				<label htmlFor="inputImgPrev" className="labelForFile">
 					<div className="preview__main__avatar">
 						<img src={imageUrl} alt="avatar" />
 					</div>
 				</label>
 				<input
-					id="inputImgPrew"
+					id="inputImgPrev"
 					type="file"
-					name="inputImg"
+					name="inputImgPrev"
 					accept=".jpg, .jpeg, .png, .webp, image/jpeg, image/png, image/webp"
 					onChange={(e) => {
 						if (e.target.files.length > 0) {
 							onLoadAvatar(e.target.files[0]);
 						}
 					}}
+					ref={inputImgPrevRef}
 				/>
 				<div className="preview-left">
 					<h1 className="preview-left__name">{contacts.name}</h1>
@@ -144,10 +153,13 @@ PreviewPanel.propTypes = {
 		link: PropTypes.string,
 	}).isRequired,
 
+	inputImgPrevRef: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 	works: PropTypes.array,
 	educations: PropTypes.array,
 	skills: PropTypes.array,
 	extra: PropTypes.string,
-	image: PropTypes.instanceOf(File),
 	onLoadAvatar: PropTypes.func,
+
+	image: PropTypes.oneOfType([PropTypes.instanceOf(File), PropTypes.string])
+		.isRequired,
 };

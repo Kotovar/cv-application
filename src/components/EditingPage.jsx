@@ -18,6 +18,7 @@ function EditingPanel(props) {
 				onPortfolioChange={props.onPortfolioChange}
 				mainField={props.mainField}
 				onLoadAvatar={props.onLoadAvatar}
+				inputImgRef={props.inputImgRef}
 			/>
 			<CardList
 				cards={props.works}
@@ -59,6 +60,7 @@ EditingPanel.propTypes = {
 	mainField: PropTypes.object,
 
 	extra: PropTypes.string,
+	inputImgRef: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 	isShowResume: PropTypes.bool,
 };
 
