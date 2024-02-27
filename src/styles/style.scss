@@ -135,6 +135,11 @@
 	}
 }
 
+.preview__work-card__left,
+.preview__education-card__left {
+	display: flex;
+}
+
 .education-section {
 	border-bottom: 3px solid black;
 	min-height: 10vh;

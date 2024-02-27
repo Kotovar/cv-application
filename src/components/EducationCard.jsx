@@ -11,18 +11,35 @@ function EducationCard({
 	const tempObj = {...education};
 	const [newCard, updateNewCard] = useImmer(tempObj);
 
-	function deleteCard() {
-		onDeleteCard(education.establishment, 'education');
+	const defaultCheck = false || newCard.endOfEducation === 'current';
+	const [currentEducation, setCurrentEducation] = useImmer(defaultCheck);
+
+	const changeEndOfEducation = (card) => {
+		return {...card, endOfEducation: 'current'};
+	};
+
+	const hasEducationEstablishment =
+		education.establishment && newCard.establishment;
+
+	function updateCard() {
+		if (hasEducationEstablishment) {
+			const changedCard = currentEducation
+				? changeEndOfEducation(newCard)
+				: newCard;
+			onUpdateCard(education.establishment, changedCard, 'education');
+		} else if (newCard.establishment) {
+			const changedCard = currentEducation
+				? changeEndOfEducation(newCard)
+				: newCard;
+			onAddCard(changedCard, 'education');
+		}
+
 		onCloseCard();
 	}
 
-	function updateCard() {
-		if (education.establishment && newCard.establishment) {
-			onUpdateCard(education.establishment, newCard, 'education');
-			onCloseCard();
-		} else if (newCard.establishment) {
-			onAddCard(newCard, 'education'), onCloseCard();
-		}
+	function deleteCard() {
+		onDeleteCard(education.establishment, 'education');
+		onCloseCard();
 	}
 
 	function onEducationChange(property, value) {
@@ -58,7 +75,9 @@ function EducationCard({
 					<div className="input_field">
 						<label htmlFor="startOfEducation">Start Date</label>
 						<input
-							type="text"
+							type="number"
+							min="1900"
+							max={new Date().getFullYear()}
 							id="startOfEducation"
 							value={newCard.startOfEducation}
 							onChange={(e) =>
@@ -69,12 +88,30 @@ function EducationCard({
 					<div className="input_field">
 						<label htmlFor="endOfEducation">End Date</label>
 						<input
-							type="text"
+							type={currentEducation ? 'text' : 'number'}
+							min="1900"
+							max={new Date().getFullYear()}
 							id="endOfEducation"
-							value={newCard.endOfEducation}
+							value={
+								currentEducation
+									? 'current'
+									: newCard.endOfEducation === 'current'
+									? ''
+									: newCard.endOfEducation
+							}
+							disabled={currentEducation}
 							onChange={(e) =>
 								onEducationChange('endOfEducation', e.target.value)
 							}
+						/>
+
+						<label htmlFor="currentEducationkDate">Current</label>
+						<input
+							type="checkbox"
+							name="currentEducationkDate"
+							id="currentEducationkDate"
+							checked={currentEducation}
+							onChange={() => setCurrentEducation(!currentEducation)}
 						/>
 					</div>
 					<div className="input_field">
@@ -89,9 +126,9 @@ function EducationCard({
 				</form>
 			</div>
 			<div className="education__buttons">
-				<button onClick={deleteCard}>Удалить</button>
-				<button onClick={onCloseCard}>Отменить</button>
-				<button onClick={updateCard}>Сохранить</button>
+				<button onClick={deleteCard}>Delete</button>
+				<button onClick={onCloseCard}>Cancel</button>
+				<button onClick={updateCard}>Save</button>
 			</div>
 		</div>
 	);
@@ -100,15 +137,15 @@ function EducationCard({
 export default EducationCard;
 
 EducationCard.propTypes = {
-	onCloseCard: PropTypes.func.isRequired,
-	onDeleteCard: PropTypes.func.isRequired,
-	onUpdateCard: PropTypes.func.isRequired,
-	onAddCard: PropTypes.func.isRequired,
+	onCloseCard: PropTypes.func,
+	onDeleteCard: PropTypes.func,
+	onUpdateCard: PropTypes.func,
+	onAddCard: PropTypes.func,
 	education: PropTypes.shape({
-		establishment: PropTypes.string.isRequired,
-		degree: PropTypes.string.isRequired,
-		startOfEducation: PropTypes.string.isRequired,
-		endOfEducation: PropTypes.string.isRequired,
-		location: PropTypes.string.isRequired,
+		establishment: PropTypes.string,
+		degree: PropTypes.string,
+		startOfEducation: PropTypes.string,
+		endOfEducation: PropTypes.string,
+		location: PropTypes.string,
 	}),
 };

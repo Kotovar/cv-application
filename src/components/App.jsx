@@ -137,14 +137,14 @@ const initialContacts = {
 		{
 			companyName: '1cBit',
 			jobPosition: 'Manager',
-			startOfWork: '01-2016',
-			endOfWork: '12-2022',
+			startOfWork: '2016-01',
+			endOfWork: '2022-12',
 			workplaceResponsibilities: 'do that and that',
 		},
 		{
 			companyName: 'NewJob',
 			jobPosition: 'Frontend Developer',
-			startOfWork: '04-2024',
+			startOfWork: '2024-01',
 			endOfWork: 'current',
 			workplaceResponsibilities: 'do that and that',
 		},

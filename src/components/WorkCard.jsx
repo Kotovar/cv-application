@@ -4,19 +4,30 @@ import {useImmer} from 'use-immer';
 function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 	const tempObj = {...work};
 	const [newCard, updateNewCard] = useImmer(tempObj);
+	const defaultCheck = false || newCard.endOfWork === 'current';
+	const [currentWork, setCurrentWork] = useImmer(defaultCheck);
+
+	const changeEndOfWork = (card) => {
+		return {...card, endOfWork: 'current'};
+	};
+
+	const hasCompanyName = work.companyName && newCard.companyName;
+
+	function updateCard() {
+		if (hasCompanyName) {
+			const changedCard = currentWork ? changeEndOfWork(newCard) : newCard;
+			onUpdateCard(work.companyName, changedCard, 'work');
+		} else if (newCard.companyName) {
+			const changedCard = currentWork ? changeEndOfWork(newCard) : newCard;
+			onAddCard(changedCard, 'work');
+		}
+
+		onCloseCard();
+	}
 
 	function deleteCard() {
 		onDeleteCard(work.companyName, 'work');
 		onCloseCard();
-	}
-
-	function updateCard() {
-		if (work.companyName && newCard.companyName) {
-			onUpdateCard(work.companyName, newCard, 'work');
-			onCloseCard();
-		} else if (newCard.companyName) {
-			onAddCard(newCard, 'work'), onCloseCard();
-		}
 	}
 
 	function onWorkChange(property, value) {
@@ -39,7 +50,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="jobPosition">Job position </label>
+						<label htmlFor="jobPosition">Job position</label>
 						<input
 							type="text"
 							id="jobPosition"
@@ -50,7 +61,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 					<div className="input_field">
 						<label htmlFor="startOfWork">Start Date</label>
 						<input
-							type="text"
+							type="month"
 							id="startOfWork"
 							value={newCard.startOfWork}
 							onChange={(e) => onWorkChange('startOfWork', e.target.value)}
@@ -59,10 +70,25 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 					<div className="input_field">
 						<label htmlFor="endOfWork">End Date</label>
 						<input
-							type="text"
+							type={currentWork ? 'text' : 'month'}
 							id="endOfWork"
-							value={newCard.endOfWork}
+							value={
+								currentWork
+									? 'current'
+									: newCard.endOfWork === 'current'
+									? ''
+									: newCard.endOfWork
+							}
+							disabled={currentWork}
 							onChange={(e) => onWorkChange('endOfWork', e.target.value)}
+						/>
+						<label htmlFor="currentWorkDate">Current</label>
+						<input
+							type="checkbox"
+							name="currentWorkDate"
+							id="currentWorkDate"
+							checked={currentWork}
+							onChange={() => setCurrentWork(!currentWork)}
 						/>
 					</div>
 					<div className="input_field">
@@ -81,9 +107,9 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 				</form>
 			</div>
 			<div className="work__buttons">
-				<button onClick={deleteCard}>Удалить</button>
-				<button onClick={onCloseCard}>Отменить</button>
-				<button onClick={updateCard}>Сохранить</button>
+				<button onClick={deleteCard}>Delete</button>
+				<button onClick={onCloseCard}>Cancel</button>
+				<button onClick={updateCard}>Save</button>
 			</div>
 		</div>
 	);
@@ -92,15 +118,15 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 export default WorkCard;
 
 WorkCard.propTypes = {
-	onCloseCard: PropTypes.func.isRequired,
-	onDeleteCard: PropTypes.func.isRequired,
-	onUpdateCard: PropTypes.func.isRequired,
-	onAddCard: PropTypes.func.isRequired,
+	onCloseCard: PropTypes.func,
+	onDeleteCard: PropTypes.func,
+	onUpdateCard: PropTypes.func,
+	onAddCard: PropTypes.func,
 	work: PropTypes.shape({
-		companyName: PropTypes.string.isRequired,
-		jobPosition: PropTypes.string.isRequired,
-		startOfWork: PropTypes.string.isRequired,
-		endOfWork: PropTypes.string.isRequired,
-		workplaceResponsibilities: PropTypes.string.isRequired,
+		companyName: PropTypes.string,
+		jobPosition: PropTypes.string,
+		startOfWork: PropTypes.string,
+		endOfWork: PropTypes.string,
+		workplaceResponsibilities: PropTypes.string,
 	}),
 };
