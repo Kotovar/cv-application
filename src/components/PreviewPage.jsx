@@ -21,7 +21,7 @@ function PreviewPanel({
 			setImageUrl(newUrl);
 
 			return () => {
-				URL.revokeObjectURL(imageUrl);
+				URL.revokeObjectURL(newUrl);
 			};
 		}
 	}, [image]);
@@ -84,11 +84,11 @@ function PreviewPanel({
 	return (
 		<div className="preview">
 			<div className="preview__main">
-				{/* <label htmlFor="inputImgPrew" className="labelForFile"> */}
-				<div className="preview__main__avatar">
-					<img src={imageUrl} alt="avatar" />
-				</div>
-				{/* </label>
+				<label htmlFor="inputImgPrew" className="labelForFile">
+					<div className="preview__main__avatar">
+						<img src={imageUrl} alt="avatar" />
+					</div>
+				</label>
 				<input
 					id="inputImgPrew"
 					type="file"
@@ -99,7 +99,7 @@ function PreviewPanel({
 							onLoadAvatar(e.target.files[0]);
 						}
 					}}
-				/> */}
+				/>
 				<div className="preview-left">
 					<h1 className="preview-left__name">{contacts.name}</h1>
 					<p className="preview-left__speciality">{contacts.speciality}</p>
