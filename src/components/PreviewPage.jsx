@@ -106,6 +106,7 @@ function PreviewPanel({
 					id="inputImgPrev"
 					type="file"
 					name="inputImgPrev"
+					className="visually-hidden"
 					accept=".jpg, .jpeg, .png, .webp, image/jpeg, image/png, image/webp"
 					onChange={(e) => {
 						if (e.target.files.length > 0) {
@@ -127,19 +128,19 @@ function PreviewPanel({
 			</div>
 
 			<div className="work-section">
-				<h1>Work experience</h1>
+				<p className="h2">Work experience</p>
 				{worksList}
 			</div>
 			<div className="education-section">
-				<h1>Education</h1>
+				<p className="h2">Education</p>
 				{educationList}
 			</div>
 			<div className="skills-section">
-				<h1>Skills</h1>
+				<p className="h2">Skills</p>
 				<div className="skills-section-list">{skillsList}</div>
 			</div>
 			<div className="extra-section">
-				<h1>Additional Information</h1>
+				<p className="h2">Additional Information</p>
 				<div className="extra-section-list">{extra}</div>
 			</div>
 		</div>

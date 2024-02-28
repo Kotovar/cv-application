@@ -8,11 +8,13 @@ function MainInformationPanel({
 }) {
 	return (
 		<div className="mainInformationPanel">
-			<h1>Personal information</h1>
+			<p className="h2">Personal information</p>
 			<div className="mainInformationPanel__inputs">
-				<form onSubmit={(e) => e.preventDefault()}>
+				<form className="personalForm" onSubmit={(e) => e.preventDefault()}>
 					<div className="input_field">
-						<label htmlFor="name">Full name</label>
+						<label className="h3" htmlFor="name">
+							Full name
+						</label>
 						<input
 							type="text"
 							id="name"
@@ -21,7 +23,9 @@ function MainInformationPanel({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="email">Email</label>
+						<label className="h3" htmlFor="email">
+							Email
+						</label>
 						<input
 							type="email"
 							id="email"
@@ -30,7 +34,9 @@ function MainInformationPanel({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="phone">Phone number</label>
+						<label className="h3" htmlFor="phone">
+							Phone number
+						</label>
 						<input
 							type="tel"
 							id="phone"
@@ -39,7 +45,9 @@ function MainInformationPanel({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="speciality">Speciality</label>
+						<label className="h3" htmlFor="speciality">
+							Speciality
+						</label>
 						<input
 							type="text"
 							id="speciality"
@@ -48,7 +56,9 @@ function MainInformationPanel({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="address">Address</label>
+						<label className="h3" htmlFor="address">
+							Address
+						</label>
 						<input
 							type="text"
 							id="address"
@@ -57,7 +67,9 @@ function MainInformationPanel({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="link">Link</label>
+						<label className="h3" htmlFor="link">
+							Link
+						</label>
 						<input
 							type="url"
 							id="link"
@@ -68,11 +80,12 @@ function MainInformationPanel({
 				</form>
 			</div>
 			<div className="mainInformationPanel__buttons">
-				<label htmlFor="inputImg" className="labelForFile labelBorder">
+				<label htmlFor="inputImg" className="labelForFile button">
 					Загрузить фото
 				</label>
 				<input
 					id="inputImg"
+					className="visually-hidden"
 					type="file"
 					name="inputImg"
 					accept=".jpg, .jpeg, .png, .webp, image/jpeg, image/png, image/webp"

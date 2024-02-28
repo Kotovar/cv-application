@@ -1,0 +1,18 @@
+.workInformationPanel,
+.educationInformationPanel {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--small-gap);
+}
+
+.cardButton {
+	background-color: var(--main-bgrd-color);
+	border: none;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+.buttonField {
+	display: flex;
+	justify-content: center;
+}

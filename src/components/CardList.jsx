@@ -24,6 +24,7 @@ function CardList(props) {
 
 	const cardsList = props.cards.map((card) => (
 		<button
+			className="cardButton"
 			key={
 				props.cardType === 'work'
 					? card.companyName + card.startOfWork
@@ -31,7 +32,9 @@ function CardList(props) {
 			}
 			onClick={() => setCurrentCard(card)}
 		>
-			{card.companyName || card.establishment}
+			<span className="inputSpan">
+				{card.companyName || card.establishment}
+			</span>
 		</button>
 	));
 
@@ -55,17 +58,22 @@ function CardList(props) {
 					: 'educationInformationPanel'
 			}
 		>
-			<h1>{props.cardType === 'work' ? 'Work experience' : 'Education'}</h1>
+			<p className="h2">
+				{props.cardType === 'work' ? 'Work experience' : 'Education'}
+			</p>
 			{cardsList}
-			<button
-				onClick={() =>
-					setCurrentCard(
-						props.cardType === 'work' ? emptyWorkCard : emptyEducationCard,
-					)
-				}
-			>
-				Add
-			</button>
+			<div className="buttonField">
+				<button
+					className="button"
+					onClick={() =>
+						setCurrentCard(
+							props.cardType === 'work' ? emptyWorkCard : emptyEducationCard,
+						)
+					}
+				>
+					Add
+				</button>
+			</div>
 		</div>
 	);
 }

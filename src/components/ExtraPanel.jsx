@@ -4,7 +4,7 @@ function ExtraPanel({extra, onUpdateCard}) {
 	const enteringExtra = (value) => onUpdateCard('', value, 'extra');
 	return (
 		<div className="extraPanel">
-			<h1>Additional Information</h1>
+			<p className="h2">Additional Information</p>
 			<textarea
 				className="extraPanelInput"
 				placeholder="Tell us about yourself, your hobbies, interests, etc."

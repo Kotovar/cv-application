@@ -14,12 +14,18 @@ function ButtonsPanel(props) {
 
 	return (
 		<div className="buttonPanel">
-			<button onClick={props.onTogglePreview}>
+			<button className="button" onClick={props.onTogglePreview}>
 				{props.isShowResume ? 'Hide preview' : 'Show preview'}
 			</button>
-			<button onClick={props.onResetResume}>Clear Resume</button>
-			<button onClick={props.onLoadExample}>Load example</button>
-			<button onClick={print}>Upload to pdf</button>
+			<button className="button" onClick={props.onResetResume}>
+				Clear Resume
+			</button>
+			<button className="button" onClick={props.onLoadExample}>
+				Load example
+			</button>
+			<button className="button" onClick={print}>
+				Upload to pdf
+			</button>
 		</div>
 	);
 }

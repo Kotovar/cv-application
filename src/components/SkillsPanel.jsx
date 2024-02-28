@@ -24,7 +24,7 @@ function SkillsPanel(props) {
 
 	return (
 		<div className="skillsPanel">
-			<h1>Skills</h1>
+			<p className="h2">Skills</p>
 			<div className="skillsPanel__list">{skillList}</div>
 			<div className="skillsPanel__inputField">
 				<form onSubmit={(e) => e.preventDefault()}>

@@ -1,0 +1,29 @@
+.mainInformationPanel {
+	display: flex;
+	flex-direction: column;
+	row-gap: calc(var(--main-gap) * 2);
+}
+
+.personalForm {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--main-gap);
+
+	& > div {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.input_field {
+	input {
+		background-color: var(--main-bgrd-color);
+		border: none;
+		border-radius: var(--border-radius-small);
+		padding: var(--input-padding);
+	}
+}
+
+.mainInformationPanel__buttons {
+	margin-bottom: var(--main-gap);
+}

@@ -115,9 +115,15 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 				</form>
 			</div>
 			<div className="work__buttons">
-				<button onClick={deleteCard}>Delete</button>
-				<button onClick={onCloseCard}>Cancel</button>
-				<button onClick={updateCard}>Save</button>
+				<button className="button" onClick={deleteCard}>
+					Delete
+				</button>
+				<button className="button" onClick={onCloseCard}>
+					Cancel
+				</button>
+				<button className="button" onClick={updateCard}>
+					Save
+				</button>
 			</div>
 		</div>
 	);

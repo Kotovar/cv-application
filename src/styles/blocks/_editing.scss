@@ -1,16 +1,22 @@
-.editor {
-	display: flex;
-	flex-direction: column;
-	background-color: var(--main-color);
-	border-radius: var(--border-radius);
-	padding: var(--container-padding);
-}
 @media print {
-	.editor {
+	#root .editor {
 		display: none;
 	}
+}
 
-	.preview {
-		display: block;
+.editor {
+	row-gap: var(--container-padding);
+
+	& > div {
+		background-color: var(--main-color);
+		padding: var(--container-padding);
+		border-radius: var(--border-radius);
 	}
+}
+
+.button {
+	border: 3px solid var(--main-bgrd-color);
+	border-radius: var(--container-padding);
+	padding: var(--button-padding) calc(var(--button-padding) * 2);
+	background-color: transparent;
 }
