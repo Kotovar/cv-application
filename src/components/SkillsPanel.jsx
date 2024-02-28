@@ -8,13 +8,18 @@ function SkillsPanel(props) {
 	));
 
 	const [newSkill, updateNewSkill] = useImmer('');
+	const [error, updateError] = useImmer('');
 
 	const enteringSkill = (value) => updateNewSkill(value);
 
 	function updateCard() {
-		props.skills.includes(newSkill)
-			? null
-			: (props.onAddCard(newSkill, 'skill'), updateNewSkill(''));
+		if (props.skills.includes(newSkill)) {
+			updateError('Already added');
+		} else {
+			props.onAddCard(newSkill, 'skill');
+			updateNewSkill('');
+			updateError('');
+		}
 	}
 
 	return (
@@ -33,6 +38,7 @@ function SkillsPanel(props) {
 					<button onClick={updateCard} disabled={!newSkill}>
 						✓
 					</button>
+					<p>{error}</p>
 				</form>
 			</div>
 		</div>
