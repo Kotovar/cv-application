@@ -1,0 +1,16 @@
+.editor {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--main-color);
+	border-radius: var(--border-radius);
+	padding: var(--container-padding);
+}
+@media print {
+	.editor {
+		display: none;
+	}
+
+	.preview {
+		display: block;
+	}
+}

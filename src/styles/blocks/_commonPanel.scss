@@ -1,0 +1,16 @@
+#root {
+	max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+	min-height: 100vh;
+	padding-inline: var(--container-padding);
+	background-color: var(--main-bgrd-color);
+	display: flex;
+	column-gap: var(--panel-gap);
+}
+
+#root > :first-child {
+	flex: 1 1 50%;
+}
+
+#root > :last-child {
+	flex: 1 1 50%;
+}

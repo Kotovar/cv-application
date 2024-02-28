@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types';
 
 function ButtonsPanel(props) {
+	function print() {
+		if (!props.isShowResume) {
+			props.onTogglePreview();
+			setTimeout(() => {
+				window.print();
+			}, 500);
+		} else {
+			window.print();
+		}
+	}
+
 	return (
 		<div className="buttonPanel">
 			<button onClick={props.onTogglePreview}>
@@ -8,7 +19,7 @@ function ButtonsPanel(props) {
 			</button>
 			<button onClick={props.onResetResume}>Clear Resume</button>
 			<button onClick={props.onLoadExample}>Load example</button>
-			<button onClick={window.print}>Upload to pdf</button>
+			<button onClick={print}>Upload to pdf</button>
 		</div>
 	);
 }
