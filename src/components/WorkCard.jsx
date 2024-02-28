@@ -50,6 +50,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 						<label htmlFor="companyName">Company Name</label>
 						<input
 							style={errorStyle}
+							placeholder="Enter the name of the company"
 							type="text"
 							id="companyName"
 							value={newCard.companyName}

@@ -62,6 +62,7 @@ function EducationCard({
 						<label htmlFor="establishment">Establishment</label>
 						<input
 							style={errorStyle}
+							placeholder="Enter the name of the establishment"
 							type="text"
 							id="establishment"
 							value={newCard.establishment}
