@@ -13,6 +13,7 @@ function EducationCard({
 
 	const defaultCheck = false || newCard.endOfEducation === 'current';
 	const [currentEducation, setCurrentEducation] = useImmer(defaultCheck);
+	const [errorStyle, setErrorStyle] = useImmer({borderColor: 'black'});
 
 	const changeEndOfEducation = (card) => {
 		return {...card, endOfEducation: 'current'};
@@ -27,14 +28,16 @@ function EducationCard({
 				? changeEndOfEducation(newCard)
 				: newCard;
 			onUpdateCard(education.establishment, changedCard, 'education');
+			onCloseCard();
 		} else if (newCard.establishment) {
 			const changedCard = currentEducation
 				? changeEndOfEducation(newCard)
 				: newCard;
 			onAddCard(changedCard, 'education');
+			onCloseCard();
+		} else {
+			setErrorStyle({borderColor: 'red'});
 		}
-
-		onCloseCard();
 	}
 
 	function deleteCard() {
@@ -43,6 +46,9 @@ function EducationCard({
 	}
 
 	function onEducationChange(property, value) {
+		if (value) {
+			setErrorStyle({borderColor: 'black'});
+		}
 		updateNewCard((draft) => {
 			draft[property] = value;
 		});
@@ -55,6 +61,7 @@ function EducationCard({
 					<div className="input_field">
 						<label htmlFor="establishment">Establishment</label>
 						<input
+							style={errorStyle}
 							type="text"
 							id="establishment"
 							value={newCard.establishment}

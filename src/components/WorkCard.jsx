@@ -6,6 +6,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 	const [newCard, updateNewCard] = useImmer(tempObj);
 	const defaultCheck = false || newCard.endOfWork === 'current';
 	const [currentWork, setCurrentWork] = useImmer(defaultCheck);
+	const [errorStyle, setErrorStyle] = useImmer({borderColor: 'black'});
 
 	const changeEndOfWork = (card) => {
 		return {...card, endOfWork: 'current'};
@@ -17,12 +18,14 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 		if (hasCompanyName) {
 			const changedCard = currentWork ? changeEndOfWork(newCard) : newCard;
 			onUpdateCard(work.companyName, changedCard, 'work');
+			onCloseCard();
 		} else if (newCard.companyName) {
 			const changedCard = currentWork ? changeEndOfWork(newCard) : newCard;
 			onAddCard(changedCard, 'work');
+			onCloseCard();
+		} else {
+			setErrorStyle({borderColor: 'red'});
 		}
-
-		onCloseCard();
 	}
 
 	function deleteCard() {
@@ -31,6 +34,9 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 	}
 
 	function onWorkChange(property, value) {
+		if (value) {
+			setErrorStyle({borderColor: 'black'});
+		}
 		updateNewCard((draft) => {
 			draft[property] = value;
 		});
@@ -43,6 +49,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 					<div className="input_field">
 						<label htmlFor="companyName">Company Name</label>
 						<input
+							style={errorStyle}
 							type="text"
 							id="companyName"
 							value={newCard.companyName}

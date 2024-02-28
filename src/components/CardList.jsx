@@ -26,7 +26,7 @@ function CardList(props) {
 		<button
 			key={
 				props.cardType === 'work'
-					? card.companyName + card.jobPosition
+					? card.companyName + card.startOfWork
 					: card.establishment + card.degree
 			}
 			onClick={() => setCurrentCard(card)}
@@ -75,7 +75,7 @@ export default CardList;
 CardList.propTypes = {
 	cards: PropTypes.array,
 	cardType: PropTypes.oneOf(['work', 'education']),
-	onDeleteCard: PropTypes.func.isRequired,
-	onUpdateCard: PropTypes.func.isRequired,
-	onAddCard: PropTypes.func.isRequired,
+	onDeleteCard: PropTypes.func,
+	onUpdateCard: PropTypes.func,
+	onAddCard: PropTypes.func,
 };

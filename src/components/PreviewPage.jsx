@@ -35,12 +35,15 @@ function PreviewPanel({
 	}, [image]);
 
 	const worksList = works.map((work) => (
-		<div key={work.companyName} className="preview__work-card">
+		<div
+			key={work.companyName + work.startOfWork}
+			className="preview__work-card"
+		>
 			<div className="preview__work-card__left">
 				<div className="preview__work-card__left__start_data">
 					<p>{work.startOfWork}</p>
 				</div>
-				<p>&nbsp;-&nbsp;</p>
+				{work.startOfWork && <p>&nbsp;-&nbsp;</p>}
 				<div className="preview__work-card__left__end_data">
 					<p>{work.endOfWork}</p>
 				</div>
@@ -65,7 +68,7 @@ function PreviewPanel({
 				<div className="preview__education-card__start_data">
 					<p>{education.startOfEducation}</p>
 				</div>
-				<p>&nbsp;-&nbsp;</p>
+				{education.startOfEducation && <p>&nbsp;-&nbsp;</p>}
 				<div className="preview__education-card__end_data">
 					<p>{education.endOfEducation}</p>
 				</div>
