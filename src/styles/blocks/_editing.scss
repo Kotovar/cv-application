@@ -20,3 +20,50 @@
 	padding: var(--button-padding) calc(var(--button-padding) * 2);
 	background-color: transparent;
 }
+
+.input_field {
+	input,
+	textarea {
+		background-color: var(--main-bgrd-color);
+		border: none;
+		border-radius: var(--border-radius-small);
+		padding: var(--input-padding);
+		outline: none;
+
+		&:focus {
+			box-shadow: var(--main-shadow);
+		}
+	}
+}
+
+// .checkboxField {
+
+// }
+
+.checkbox {
+	display: flex;
+	align-items: center;
+	column-gap: var(--small-gap);
+	user-select: none;
+}
+
+.checkbox-control:not(:checked) + .checkbox-emulator::after {
+	display: none;
+}
+
+.checkbox-emulator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-items: center;
+	width: 1em;
+	height: 1em;
+	border: 2px solid var(--main-bgrd-color);
+	border-radius: 5px;
+	background-color: var(--main-color);
+}
+
+.checkbox-emulator::after {
+	content: '✔';
+	color: var(--main-font-color);
+}

@@ -16,3 +16,60 @@
 	display: flex;
 	justify-content: center;
 }
+
+.work,
+.education {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--main-gap);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--small-gap);
+
+	& .input_field {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.dateField {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: var(--small-gap);
+
+	& > :last-child > input {
+		margin-bottom: var(--small-gap);
+	}
+}
+
+textarea {
+	resize: vertical;
+
+	&::-webkit-scrollbar {
+		background-color: var(--main-bgrd-color);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--main-color);
+		border-radius: 10px 0 0 10px;
+		border-right: 1px solid var(--main-bgrd-color);
+	}
+
+	&::-webkit-scrollbar-corner {
+		background-color: var(--main-bgrd-color);
+	}
+}
+
+.work__buttons,
+.education__buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.confirmButtonsPanel {
+	display: flex;
+	column-gap: var(--main-gap);
+}

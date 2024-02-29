@@ -59,7 +59,9 @@ function EducationCard({
 			<div className="education__inputs">
 				<form onSubmit={(e) => e.preventDefault()}>
 					<div className="input_field">
-						<label htmlFor="establishment">Establishment</label>
+						<label className="h3" htmlFor="establishment">
+							Establishment
+						</label>
 						<input
 							style={errorStyle}
 							placeholder="Enter the name of the establishment"
@@ -72,7 +74,9 @@ function EducationCard({
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="degree">Degree</label>
+						<label className="h3" htmlFor="degree">
+							Degree
+						</label>
 						<input
 							type="text"
 							id="degree"
@@ -80,50 +84,64 @@ function EducationCard({
 							onChange={(e) => onEducationChange('degree', e.target.value)}
 						/>
 					</div>
-					<div className="input_field">
-						<label htmlFor="startOfEducation">Start Date</label>
-						<input
-							type="number"
-							min="1900"
-							max={new Date().getFullYear()}
-							id="startOfEducation"
-							value={newCard.startOfEducation}
-							onChange={(e) =>
-								onEducationChange('startOfEducation', e.target.value)
-							}
-						/>
+					<div className="dateField">
+						<div className="input_field">
+							<label className="h3" htmlFor="startOfEducation">
+								Start Date
+							</label>
+							<input
+								type="number"
+								min="1900"
+								max={new Date().getFullYear()}
+								id="startOfEducation"
+								value={newCard.startOfEducation}
+								onChange={(e) =>
+									onEducationChange('startOfEducation', e.target.value)
+								}
+							/>
+						</div>
+						<div className="input_field">
+							<label className="h3" htmlFor="endOfEducation">
+								End Date
+							</label>
+							<input
+								type="number"
+								min="1900"
+								max={new Date().getFullYear()}
+								id="endOfEducation"
+								value={
+									currentEducation
+										? ''
+										: newCard.endOfEducation === 'current'
+										? ''
+										: newCard.endOfEducation
+								}
+								disabled={currentEducation}
+								onChange={(e) =>
+									onEducationChange('endOfEducation', e.target.value)
+								}
+							/>
+							<div className="checkboxField">
+								<label className="checkbox">
+									<input
+										className="checkbox-control visually-hidden"
+										type="checkbox"
+										name="currentEducationkDate"
+										id="currentEducationkDate"
+										checked={currentEducation}
+										onChange={() => setCurrentEducation(!currentEducation)}
+									/>
+									<span className="checkbox-emulator"></span>
+									<span className="checkbox-label">Current</span>
+								</label>
+							</div>
+						</div>
 					</div>
-					<div className="input_field">
-						<label htmlFor="endOfEducation">End Date</label>
-						<input
-							type={currentEducation ? 'text' : 'number'}
-							min="1900"
-							max={new Date().getFullYear()}
-							id="endOfEducation"
-							value={
-								currentEducation
-									? 'current'
-									: newCard.endOfEducation === 'current'
-									? ''
-									: newCard.endOfEducation
-							}
-							disabled={currentEducation}
-							onChange={(e) =>
-								onEducationChange('endOfEducation', e.target.value)
-							}
-						/>
 
-						<label htmlFor="currentEducationkDate">Current</label>
-						<input
-							type="checkbox"
-							name="currentEducationkDate"
-							id="currentEducationkDate"
-							checked={currentEducation}
-							onChange={() => setCurrentEducation(!currentEducation)}
-						/>
-					</div>
 					<div className="input_field">
-						<label htmlFor="location">Location</label>
+						<label className="h3" htmlFor="location">
+							Location
+						</label>
 						<input
 							type="text"
 							id="location"
@@ -137,12 +155,14 @@ function EducationCard({
 				<button className="button" onClick={deleteCard}>
 					Delete
 				</button>
-				<button className="button" onClick={onCloseCard}>
-					Cancel
-				</button>
-				<button className="button" onClick={updateCard}>
-					Save
-				</button>
+				<div className="confirmButtonsPanel">
+					<button className="button" onClick={onCloseCard}>
+						Cancel
+					</button>
+					<button className="button" onClick={updateCard}>
+						Save
+					</button>
+				</div>
 			</div>
 		</div>
 	);

@@ -47,7 +47,9 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 			<div className="work__inputs">
 				<form onSubmit={(e) => e.preventDefault()}>
 					<div className="input_field">
-						<label htmlFor="companyName">Company Name</label>
+						<label className="h3" htmlFor="companyName">
+							Company Name
+						</label>
 						<input
 							style={errorStyle}
 							placeholder="Enter the name of the company"
@@ -58,7 +60,9 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 						/>
 					</div>
 					<div className="input_field">
-						<label htmlFor="jobPosition">Job position</label>
+						<label className="h3" htmlFor="jobPosition">
+							Job position
+						</label>
 						<input
 							type="text"
 							id="jobPosition"
@@ -66,45 +70,58 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 							onChange={(e) => onWorkChange('jobPosition', e.target.value)}
 						/>
 					</div>
-					<div className="input_field">
-						<label htmlFor="startOfWork">Start Date</label>
-						<input
-							type="month"
-							id="startOfWork"
-							value={newCard.startOfWork}
-							onChange={(e) => onWorkChange('startOfWork', e.target.value)}
-						/>
+					<div className="dateField">
+						<div className="input_field">
+							<label className="h3" htmlFor="startOfWork">
+								Start Date
+							</label>
+							<input
+								type="month"
+								id="startOfWork"
+								value={newCard.startOfWork}
+								onChange={(e) => onWorkChange('startOfWork', e.target.value)}
+							/>
+						</div>
+						<div className="input_field">
+							<label className="h3" htmlFor="endOfWork">
+								End Date
+							</label>
+							<input
+								type="month"
+								id="endOfWork"
+								value={
+									currentWork
+										? ''
+										: newCard.endOfWork === 'current'
+										? ''
+										: newCard.endOfWork
+								}
+								disabled={currentWork}
+								onChange={(e) => onWorkChange('endOfWork', e.target.value)}
+							/>
+							<div className="checkboxField">
+								<label className="checkbox">
+									<input
+										className="checkbox-control visually-hidden"
+										type="checkbox"
+										name="currentWorkDate"
+										id="currentWorkDate"
+										checked={currentWork}
+										onChange={() => setCurrentWork(!currentWork)}
+									/>
+									<span className="checkbox-emulator"></span>
+									<span className="checkbox-label">Current</span>
+								</label>
+							</div>
+						</div>
 					</div>
+
 					<div className="input_field">
-						<label htmlFor="endOfWork">End Date</label>
-						<input
-							type={currentWork ? 'text' : 'month'}
-							id="endOfWork"
-							value={
-								currentWork
-									? 'current'
-									: newCard.endOfWork === 'current'
-									? ''
-									: newCard.endOfWork
-							}
-							disabled={currentWork}
-							onChange={(e) => onWorkChange('endOfWork', e.target.value)}
-						/>
-						<label htmlFor="currentWorkDate">Current</label>
-						<input
-							type="checkbox"
-							name="currentWorkDate"
-							id="currentWorkDate"
-							checked={currentWork}
-							onChange={() => setCurrentWork(!currentWork)}
-						/>
-					</div>
-					<div className="input_field">
-						<label htmlFor="workplaceResponsibilities">
+						<label className="h3" htmlFor="workplaceResponsibilities">
 							Workplace Responsibilities
 						</label>
-						<input
-							type="text"
+						<textarea
+							rows="6"
 							id="workplaceResponsibilities"
 							value={newCard.workplaceResponsibilities}
 							onChange={(e) =>
@@ -118,12 +135,14 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 				<button className="button" onClick={deleteCard}>
 					Delete
 				</button>
-				<button className="button" onClick={onCloseCard}>
-					Cancel
-				</button>
-				<button className="button" onClick={updateCard}>
-					Save
-				</button>
+				<div className="confirmButtonsPanel">
+					<button className="button" onClick={onCloseCard}>
+						Cancel
+					</button>
+					<button className="button" onClick={updateCard}>
+						Save
+					</button>
+				</div>
 			</div>
 		</div>
 	);
