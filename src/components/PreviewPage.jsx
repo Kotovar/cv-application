@@ -116,7 +116,7 @@ function PreviewPanel({
 					ref={inputImgPrevRef}
 				/>
 				<div className="preview-left">
-					<h1 className="preview-left__name">{contacts.name}</h1>
+					<p className="preview-left__name h3">{contacts.name}</p>
 					<p className="preview-left__speciality">{contacts.speciality}</p>
 					<p className="preview-left__address">{contacts.address}</p>
 				</div>
@@ -128,19 +128,19 @@ function PreviewPanel({
 			</div>
 
 			<div className="work-section">
-				<p className="h2">Work experience</p>
+				<p className="h2 titlePreview">Work experience</p>
 				{worksList}
 			</div>
 			<div className="education-section">
-				<p className="h2">Education</p>
+				<p className="h2 titlePreview">Education</p>
 				{educationList}
 			</div>
 			<div className="skills-section">
-				<p className="h2">Skills</p>
+				<p className="h2 titlePreview">Skills</p>
 				<div className="skills-section-list">{skillsList}</div>
 			</div>
 			<div className="extra-section">
-				<p className="h2">Additional Information</p>
+				<p className="h2 titlePreview">Additional Information</p>
 				<div className="extra-section-list">{extra}</div>
 			</div>
 		</div>

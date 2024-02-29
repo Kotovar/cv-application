@@ -44,7 +44,11 @@ $mobile-s: 480px;
 }
 
 @media print {
-	.editor {
+	#root .editor {
 		display: none;
+	}
+
+	#root {
+		max-width: 100%;
 	}
 }

@@ -2,10 +2,9 @@
 	font-size: clamp(#{$min}px, calc(#{$max} / 1024 * 100vw), #{$max}px);
 }
 
-@mixin reset-button {
-	padding: 0;
-	background-color: transparent;
-	border: none;
+@mixin square($size) {
+	width: $size;
+	aspect-ratio: 1;
 }
 
 @mixin hover {
