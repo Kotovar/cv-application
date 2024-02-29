@@ -6,6 +6,7 @@ function ExtraPanel({extra, onUpdateCard}) {
 		<div className="extraPanel">
 			<p className="h2">Additional Information</p>
 			<textarea
+				rows="10"
 				className="extraPanelInput"
 				placeholder="Tell us about yourself, your hobbies, interests, etc."
 				onChange={(e) => enteringExtra(e.target.value)}

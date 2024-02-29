@@ -8,9 +8,18 @@
 	row-gap: var(--container-padding);
 
 	& > div {
+		display: flex;
 		background-color: var(--main-color);
 		padding: var(--container-padding);
 		border-radius: var(--border-radius);
+	}
+
+	& > div:not(.buttonPanel) {
+		flex-direction: column;
+	}
+
+	& > div:not(.buttonPanel, .mainInformationPanel) {
+		row-gap: var(--small-gap);
 	}
 }
 
@@ -21,24 +30,19 @@
 	background-color: transparent;
 }
 
-.input_field {
-	input,
-	textarea {
-		background-color: var(--main-bgrd-color);
-		border: none;
-		border-radius: var(--border-radius-small);
-		padding: var(--input-padding);
-		outline: none;
+.skillsPanel__input,
+textarea,
+input {
+	background-color: var(--main-bgrd-color);
+	border: none;
+	border-radius: var(--border-radius-small);
+	padding: var(--input-padding);
+	outline: none;
 
-		&:focus {
-			box-shadow: var(--main-shadow);
-		}
+	&:focus {
+		box-shadow: var(--main-shadow);
 	}
 }
-
-// .checkboxField {
-
-// }
 
 .checkbox {
 	display: flex;

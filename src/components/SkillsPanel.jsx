@@ -35,8 +35,8 @@ function SkillsPanel(props) {
 						onChange={(e) => enteringSkill(e.target.value)}
 						value={newSkill}
 					/>
-					<button onClick={updateCard} disabled={!newSkill}>
-						✓
+					<button className="button" onClick={updateCard} disabled={!newSkill}>
+						Add
 					</button>
 					<p>{error}</p>
 				</form>

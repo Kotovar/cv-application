@@ -1,0 +1,48 @@
+.skillsPanel__list {
+	display: flex;
+	gap: var(--main-gap);
+	flex-wrap: wrap;
+}
+
+.skillCard {
+	display: flex;
+	align-items: center;
+	border: 1px solid var(--main-font-color);
+	border-radius: var(--border-radius-small);
+
+	button {
+		border: none;
+		background-color: transparent;
+		display: flex;
+
+		@include hover {
+			transform: scale(1.1);
+		}
+	}
+}
+
+.deleteImage {
+	width: 1.4em;
+	aspect-ratio: 1;
+	fill: var(--main-font-color);
+}
+
+.skillNameLabel {
+	padding: var(--button-padding);
+}
+
+.skillsPanel__input + button {
+	align-self: center;
+	margin-top: var(--small-gap);
+
+	& + p {
+		color: var(--warning-color);
+		height: 2ch;
+	}
+}
+
+.skillsPanel__inputField {
+	form {
+		gap: 0;
+	}
+}

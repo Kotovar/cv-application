@@ -1,5 +1,4 @@
 .buttonPanel {
-	display: flex;
-	column-gap: 16px;
+	gap: var(--main-gap);
 	flex-wrap: wrap;
 }
