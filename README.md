@@ -2,7 +2,7 @@
 
 This is a resume builder with the ability to upload to pdf using standard browser tools.
 
-img
+![1](https://github.com/Kotovar/cv-application/assets/77914431/96cc52ee-e26c-43f3-82cd-31ed7e2bbdc4)
 
 [Live preview](https://main--cvaplication.netlify.app/)
 
@@ -29,6 +29,8 @@ To create this application I used the following technologies:
 ---
 
 This constructor allows you to specify basic information, information about work, education, skills and additional information in free form. You can upload your own photo. To export in pdf format, the built-in browser properties and @media print settings are used. Use localStorage to store entered data.
+
+![1](https://github.com/Kotovar/cv-application/assets/77914431/95b93b90-be6e-44b4-bbf0-2ff4dca019bf)
 
 ## Credits
 
