@@ -26,9 +26,11 @@
 .preview {
 	background-color: var(--main-color);
 	margin-top: var(--container-padding);
+	height: fit-content;
 
 	& > div {
 		display: grid;
+		min-height: 10vh;
 	}
 
 	&__main {
@@ -78,5 +80,6 @@
 
 	#root {
 		max-width: 100%;
+		background-color: var(--main-color);
 	}
 }

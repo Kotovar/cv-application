@@ -159,7 +159,16 @@ const initialContacts = {
 			location: 'Russia, Krasnoyarsk',
 		},
 	],
-	skills: ['javaScript', 'Html', 'Css', 'Webpack'],
+	skills: [
+		'Html',
+		'Css',
+		'Sass',
+		'javaScript',
+		'React',
+		'Jest',
+		'Webpack',
+		'Vite',
+	],
 	extra:
 		'Focused on professional growth in frontend development, I am dedicated to self-learning through resources like roadmap.sh/frontend and The Odin Project.',
 };

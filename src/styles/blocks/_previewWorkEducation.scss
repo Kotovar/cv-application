@@ -23,9 +23,28 @@
 		p:first-child {
 			font-weight: bold;
 		}
+
+		p:nth-child(2) {
+			font-style: italic;
+		}
 	}
 }
 
-.review__work-card__right_responsibilities {
+.review__work-card__right_responsibilities,
+.extra-section-list {
 	white-space: pre-wrap;
+	text-align: justify;
+}
+
+.work-section,
+.education-section {
+	hr:not(:last-child) {
+		width: 90%;
+		border: 0;
+		box-shadow: 0 0 5px 1px var(--main-font-color);
+	}
+
+	hr:last-child {
+		display: none;
+	}
 }

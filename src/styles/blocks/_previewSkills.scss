@@ -1,0 +1,21 @@
+.skills-section-list {
+	display: flex;
+	gap: var(--main-gap);
+	flex-wrap: wrap;
+	padding-block: var(--container-padding);
+
+	& > div {
+		display: flex;
+		align-items: center;
+		column-gap: var(--micro-gap);
+	}
+
+	& > div::before {
+		content: '';
+
+		border: 1px solid var(--main-font-color);
+		border-radius: 50%;
+		height: 0.4em;
+		aspect-ratio: 1;
+	}
+}
