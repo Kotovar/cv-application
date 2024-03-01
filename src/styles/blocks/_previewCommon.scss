@@ -36,8 +36,8 @@
 	&__main {
 		column-gap: var(--main-gap);
 		$column-1: 16%;
-		$column-2: calc(42% - var(--main-gap) / 2 - var(--container-padding-half));
-		$column-3: calc(42% - var(--main-gap) / 2 - var(--container-padding-half));
+		$column-2: calc(36% - var(--main-gap) / 2 - var(--container-padding-half));
+		$column-3: calc(48% - var(--main-gap) / 2 - var(--container-padding-half));
 
 		grid-template-columns: $column-1 $column-2 $column-3;
 
@@ -49,6 +49,9 @@
 		}
 
 		div {
+			display: flex;
+			flex-direction: column;
+
 			p {
 				word-wrap: break-word;
 			}
@@ -61,24 +64,16 @@
 	}
 }
 
-.preview-left {
-	&__name {
-		font-weight: bold;
-		margin-bottom: var(--photo-margin);
-	}
-
-	display: flex;
-	flex-direction: column;
-	word-wrap: break-word;
+.preview-left__name {
+	font-weight: bold;
+	margin-bottom: var(--photo-margin);
 }
 
 .preview-right {
-	display: flex;
-	flex-direction: column;
 	align-items: flex-end;
 	justify-content: flex-end;
 }
 
 .preview-right__link {
-	align-self: normal;
+	word-break: break-all;
 }
