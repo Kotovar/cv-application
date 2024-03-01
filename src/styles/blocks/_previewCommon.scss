@@ -82,14 +82,3 @@
 .preview-right__link {
 	align-self: normal;
 }
-
-@media print {
-	#root .editor {
-		display: none;
-	}
-
-	#root {
-		max-width: 100%;
-		background-color: var(--main-color);
-	}
-}

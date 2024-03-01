@@ -4,13 +4,19 @@ import {useState} from 'react';
 import {useImmer} from 'use-immer';
 import defaultImage from '/public/images/avatar.jpg';
 import {useRef} from 'react';
+import {useEffect} from 'react';
 
 function App() {
 	const [show, setShow] = useState(true);
 	const [image, setImage] = useState(defaultImage);
-	const [portfolio, updatePortfolio] = useImmer(initialContacts);
+
+	const [portfolio, updatePortfolio] = useImmer(loadFromLocal());
 	const inputImgPrevRef = useRef(null);
 	const inputImgRef = useRef(null);
+
+	useEffect(() => {
+		saveToLocal();
+	}, [portfolio]);
 
 	const handleTogglePreview = () => setShow(!show);
 
@@ -22,9 +28,26 @@ function App() {
 		inputImgRef.current.value &&= '';
 	};
 
-	const loadExample = () => updatePortfolio(initialContacts);
+	const loadExample = () => updatePortfolio(exampleResume);
 
 	const loadAvatar = (value) => setImage(value);
+
+	function saveToLocal() {
+		let objJSON = JSON.stringify(portfolio);
+		localStorage.setItem('resume', objJSON);
+	}
+
+	function loadFromLocal() {
+		let retrievedJSON = localStorage.getItem('resume');
+		let resume;
+		if (retrievedJSON) {
+			resume = JSON.parse(retrievedJSON);
+		} else {
+			resume = initialContacts;
+		}
+
+		return resume;
+	}
 
 	function handlePortfolioMainChange(property, value) {
 		updatePortfolio((draft) => {
@@ -124,7 +147,7 @@ function App() {
 
 export default App;
 
-const initialContacts = {
+const exampleResume = {
 	mainField: {
 		name: 'Dmitrii',
 		email: 'neasit3@gmail.com',
@@ -174,6 +197,21 @@ const initialContacts = {
 };
 
 const emptyResume = {
+	mainField: {
+		name: '',
+		email: '',
+		phone: '',
+		speciality: '',
+		address: '',
+		link: '',
+	},
+	work: [],
+	education: [],
+	skills: [],
+	extra: '',
+};
+
+const initialContacts = {
 	mainField: {
 		name: '',
 		email: '',
