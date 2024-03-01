@@ -54,6 +54,11 @@
 			}
 		}
 	}
+
+	@include mobile {
+		flex-direction: column;
+		margin-inline: var(--container-padding);
+	}
 }
 
 .preview-left {
@@ -64,6 +69,7 @@
 
 	display: flex;
 	flex-direction: column;
+	word-wrap: break-word;
 }
 
 .preview-right {
@@ -71,6 +77,10 @@
 	flex-direction: column;
 	align-items: flex-end;
 	justify-content: flex-end;
+}
+
+.preview-right__link {
+	align-self: normal;
 }
 
 @media print {

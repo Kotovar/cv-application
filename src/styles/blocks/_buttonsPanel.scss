@@ -1,4 +1,8 @@
 .buttonPanel {
 	gap: var(--main-gap);
 	flex-wrap: wrap;
+
+	@include mobile {
+		flex-direction: column;
+	}
 }

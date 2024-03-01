@@ -19,7 +19,7 @@
 
 .button {
 	border: 3px solid var(--main-bgrd-color);
-	border-radius: var(--container-padding);
+	border-radius: var(--border-radius);
 	padding: var(--button-padding) calc(var(--button-padding) * 2);
 	background-color: transparent;
 }

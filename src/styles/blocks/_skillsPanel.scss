@@ -19,6 +19,11 @@
 			transform: scale(1.1);
 		}
 	}
+
+	@include mobile {
+		@include fluid-text(22, 20);
+		padding: 0.4em;
+	}
 }
 
 .deleteImage {
@@ -34,6 +39,10 @@
 .skillsPanel__input + button {
 	align-self: center;
 	margin-top: var(--small-gap);
+
+	@include mobile {
+		align-self: auto;
+	}
 
 	& + p {
 		color: var(--warning-color);

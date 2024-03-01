@@ -16,3 +16,11 @@
 .mainInformationPanel__buttons {
 	margin-bottom: var(--main-gap);
 }
+
+.labelForFile {
+	@include mobile {
+		flex-direction: column;
+		display: flex;
+		align-items: center;
+	}
+}

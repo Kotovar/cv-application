@@ -14,6 +14,21 @@
 		padding: var(--container-padding);
 		border-radius: var(--border-radius);
 		overflow: hidden;
+
+		@include mobile-s {
+			--container-padding: 8px;
+		}
+	}
+
+	@include desktop {
+		column-gap: 0;
+		padding: 0;
+		max-width: calc(100vw - var(--container-padding));
+	}
+
+	@include mobile {
+		flex-direction: column;
+		max-width: 100vw;
 	}
 }
 

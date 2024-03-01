@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {useEffect} from 'react';
+import {Fragment, useEffect} from 'react';
 import {useState} from 'react';
 
 function PreviewPanel({
@@ -35,11 +35,8 @@ function PreviewPanel({
 	}, [image]);
 
 	const worksList = works.map((work) => (
-		<>
-			<div
-				key={work.companyName + work.startOfWork}
-				className="preview__work-card"
-			>
+		<Fragment key={work.companyName + work.startOfWork}>
+			<div className="preview__work-card">
 				<div className="preview__work-card__left">
 					<div className="preview__work-card__left__start_data">
 						<p>{work.startOfWork}</p>
@@ -61,15 +58,12 @@ function PreviewPanel({
 				</div>
 			</div>
 			<hr />
-		</>
+		</Fragment>
 	));
 
 	const educationList = educations.map((education) => (
-		<>
-			<div
-				key={education.establishment + education.degree}
-				className="preview__education-card"
-			>
+		<Fragment key={education.establishment + education.degree}>
+			<div className="preview__education-card">
 				<div className="preview__education-card__left">
 					<div className="preview__education-card__start_data">
 						<p>{education.startOfEducation}</p>
@@ -94,7 +88,7 @@ function PreviewPanel({
 				</div>
 			</div>
 			<hr />
-		</>
+		</Fragment>
 	));
 
 	const skillsList = skills.map((skill) => (
