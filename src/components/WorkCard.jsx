@@ -120,6 +120,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 						<label className="h3" htmlFor="workplaceResponsibilities">
 							Workplace Responsibilities
 						</label>
+
 						<textarea
 							rows="6"
 							id="workplaceResponsibilities"

@@ -139,7 +139,8 @@ const initialContacts = {
 			jobPosition: 'Manager',
 			startOfWork: '2016-01',
 			endOfWork: '2022-12',
-			workplaceResponsibilities: 'do that and that',
+			workplaceResponsibilities:
+				'Technical Proficiency: Deployed and managed Electronic Digital Signatures (EDS) and implemented SBIS software solutions for diverse business needs. Configured and troubleshot workstations for Windows and macOS, optimizing for state and electronic portal access, SBIS applications, and POS systems.\n\nProblem-Solving: Demonstrated ability to swiftly diagnose and resolve complex technical issues, including software errors, hardware compatibility, and system configuration challenges, enhancing operational efficiency and customer satisfaction.',
 		},
 		{
 			companyName: 'NewJob',

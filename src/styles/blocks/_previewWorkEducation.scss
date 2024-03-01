@@ -1,0 +1,31 @@
+.work-section,
+.education-section {
+	row-gap: var(--main-gap);
+}
+
+.preview__work-card,
+.preview__education-card {
+	display: grid;
+	grid-template-columns: 20% 1fr;
+	column-gap: var(--main-gap);
+
+	& > div:first-child {
+		display: flex;
+		flex-wrap: wrap;
+		align-content: flex-start;
+	}
+
+	& > div:last-child {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--small-gap);
+
+		p:first-child {
+			font-weight: bold;
+		}
+	}
+}
+
+.review__work-card__right_responsibilities {
+	white-space: pre-wrap;
+}
