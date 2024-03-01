@@ -2,6 +2,10 @@
 	gap: var(--main-gap);
 	flex-wrap: wrap;
 
+	@include desktop {
+		justify-content: space-between;
+	}
+
 	@include mobile {
 		flex-direction: column;
 	}

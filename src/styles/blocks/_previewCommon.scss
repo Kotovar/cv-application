@@ -56,6 +56,16 @@
 				word-wrap: break-word;
 			}
 		}
+
+		label {
+			align-self: center;
+		}
+
+		@include mobile {
+			column-gap: 4px;
+			justify-content: center;
+			grid-template-columns: 16% 36% 48%;
+		}
 	}
 
 	@include mobile {
@@ -76,4 +86,10 @@
 
 .preview-right__link {
 	word-break: break-all;
+}
+
+.h2 {
+	@include desktop {
+		@include fluid-text(36, 32);
+	}
 }

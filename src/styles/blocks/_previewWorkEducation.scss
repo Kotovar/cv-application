@@ -28,6 +28,11 @@
 			font-style: italic;
 		}
 	}
+
+	@include mobile {
+		grid-template-columns: 15% 1fr;
+		column-gap: 4px;
+	}
 }
 
 .review__work-card__right_responsibilities,
