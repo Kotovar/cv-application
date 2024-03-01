@@ -87,12 +87,12 @@ function EducationCard({
 					<div className="dateField">
 						<div className="input_field">
 							<label className="h3" htmlFor="startOfEducation">
-								Start Date
+								Start Year
 							</label>
 							<input
 								type="number"
 								min="1900"
-								max={new Date().getFullYear()}
+								max={currentEducation ? null : newCard.endOfEducation}
 								id="startOfEducation"
 								value={newCard.startOfEducation}
 								onChange={(e) =>
@@ -102,11 +102,11 @@ function EducationCard({
 						</div>
 						<div className="input_field">
 							<label className="h3" htmlFor="endOfEducation">
-								End Date
+								End Year
 							</label>
 							<input
 								type="number"
-								min="1900"
+								min={newCard.startOfEducation}
 								max={new Date().getFullYear()}
 								id="endOfEducation"
 								value={

@@ -77,6 +77,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 							</label>
 							<input
 								type="month"
+								max={currentWork ? null : newCard.endOfWork}
 								id="startOfWork"
 								value={newCard.startOfWork}
 								onChange={(e) => onWorkChange('startOfWork', e.target.value)}
@@ -87,6 +88,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 								End Date
 							</label>
 							<input
+								min={newCard.startOfWork}
 								type="month"
 								id="endOfWork"
 								value={
