@@ -89,6 +89,11 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 							</label>
 							<input
 								min={newCard.startOfWork}
+								max={
+									new Date().getFullYear() +
+									'-' +
+									(new Date().getMonth() + 1).toString().padStart(2, '0')
+								}
 								type="month"
 								id="endOfWork"
 								value={
