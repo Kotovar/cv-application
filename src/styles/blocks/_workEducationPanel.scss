@@ -4,6 +4,10 @@
 	border-radius: var(--border-radius);
 	overflow: hidden;
 	min-height: 2em;
+
+	@include hover {
+		background-color: var(--card-gover-color);
+	}
 }
 
 .buttonField {

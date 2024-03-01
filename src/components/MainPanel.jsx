@@ -81,7 +81,7 @@ function MainInformationPanel({
 			</div>
 			<div className="mainInformationPanel__buttons">
 				<label htmlFor="inputImg" className="labelForFile button">
-					Загрузить фото
+					Upload photo
 				</label>
 				<input
 					id="inputImg"

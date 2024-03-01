@@ -34,7 +34,7 @@ input {
 	outline: none;
 
 	&:focus {
-		box-shadow: var(--main-shadow);
+		background-color: var(--card-gover-color);
 	}
 }
 
@@ -64,4 +64,14 @@ input {
 .checkbox-emulator::after {
 	content: '✔';
 	color: var(--main-font-color);
+}
+
+.button {
+	@include hover {
+		box-shadow: var(--shadow-click);
+	}
+}
+
+.button:active {
+	box-shadow: var(--shadow-release);
 }

@@ -17,6 +17,11 @@
 	--main-color: #ffffff;
 	--main-font-color: #000000;
 	--warning-color: #c80c0c;
+	--card-gover-color: #b2b2b2;
 
 	--main-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+	--shadow-click: 0 3px 5px rgba(0, 0, 0, 0.2);
+	--shadow-release: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+
+	--transition-duration: 0.2s;
 }

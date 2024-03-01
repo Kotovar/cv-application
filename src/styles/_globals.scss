@@ -1,8 +1,24 @@
+@font-face {
+	font-family: 'Spectral';
+	src: url('/fonts/Spectral-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Spectral';
+	src: url('/fonts/Spectral-Regular.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 body {
 	@include fluid-text(18, 16);
 
-	// font-family: var(--font-family-base);
-	// font-weight: 400;
+	font-family: Spectral, sans-serif;
+	font-weight: 400;
 	line-height: 1.28;
 	color: var(--main-font-color);
 	background-color: var(--main-bgrd-color);
@@ -10,6 +26,7 @@ body {
 
 a,
 button,
+.labelForFile,
 input,
 textarea,
 svg * {
