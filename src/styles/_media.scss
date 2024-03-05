@@ -44,12 +44,22 @@ $mobile-s: 480px;
 }
 
 @media print {
+	#root {
+		max-width: 100%;
+		background-color: var(--main-color);
+		max-width: 100vw !important;
+	}
+
 	#root .editor {
 		display: none;
 	}
 
-	#root {
-		max-width: 100%;
+	#root .preview {
+		margin-inline: auto !important;
+	}
+
+	body {
+		@include fluid-text(16, 14);
 		background-color: var(--main-color);
 	}
 }
