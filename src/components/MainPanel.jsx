@@ -52,7 +52,7 @@ function MainInformationPanel({
 							type="text"
 							id="speciality"
 							onChange={(e) => onPortfolioChange('speciality', e.target.value)}
-							value={mainField.speciality}
+							value={mainField.specialty}
 						/>
 					</div>
 					<div className="input_field">
@@ -110,7 +110,7 @@ MainInformationPanel.propTypes = {
 		name: PropTypes.string,
 		email: PropTypes.string,
 		phone: PropTypes.string,
-		speciality: PropTypes.string,
+		specialty: PropTypes.string,
 		address: PropTypes.string,
 		link: PropTypes.string,
 	}),

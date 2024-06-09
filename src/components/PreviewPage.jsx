@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import {Fragment, useEffect} from 'react';
-import {useState} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 
 function PreviewPanel({
 	contacts,
@@ -120,7 +119,7 @@ function PreviewPanel({
 				/>
 				<div className="preview-left">
 					<p className="preview-left__name h3">{contacts.name}</p>
-					<p className="preview-left__speciality">{contacts.speciality}</p>
+					<p className="preview-left__speciality">{contacts.specialty}</p>
 					<p className="preview-left__address">{contacts.address}</p>
 				</div>
 				<div className="preview-right">
@@ -157,7 +156,7 @@ PreviewPanel.propTypes = {
 		name: PropTypes.string,
 		email: PropTypes.string,
 		phone: PropTypes.string,
-		speciality: PropTypes.string,
+		specialty: PropTypes.string,
 		address: PropTypes.string,
 		link: PropTypes.string,
 	}).isRequired,

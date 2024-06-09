@@ -1,20 +1,22 @@
 import EditingPanel from './EditingPage';
 import PreviewPanel from './PreviewPage';
-import {useState} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {useImmer} from 'use-immer';
-import defaultImage from '/public/images/avatar.jpg';
-import {useRef} from 'react';
-import {useEffect} from 'react';
+import defaultImage from '../../public/images/avatar.jpg';
 
 function App() {
 	const [show, setShow] = useState(true);
 	const [image, setImage] = useState(defaultImage);
 
-	const [portfolio, updatePortfolio] = useImmer(loadFromLocal());
 	const inputImgPrevRef = useRef(null);
+	const [portfolio, updatePortfolio] = useImmer(loadFromLocal());
 	const inputImgRef = useRef(null);
 
 	useEffect(() => {
+		function saveToLocal() {
+			let objJSON = JSON.stringify(portfolio);
+			localStorage.setItem('resume', objJSON);
+		}
 		saveToLocal();
 	}, [portfolio]);
 
@@ -32,21 +34,10 @@ function App() {
 
 	const loadAvatar = (value) => setImage(value);
 
-	function saveToLocal() {
-		let objJSON = JSON.stringify(portfolio);
-		localStorage.setItem('resume', objJSON);
-	}
-
 	function loadFromLocal() {
-		let retrievedJSON = localStorage.getItem('resume');
-		let resume;
-		if (retrievedJSON) {
-			resume = JSON.parse(retrievedJSON);
-		} else {
-			resume = initialContacts;
-		}
+		const retrievedJSON = localStorage.getItem('resume');
 
-		return resume;
+		return retrievedJSON ? JSON.parse(retrievedJSON) : initialContacts;
 	}
 
 	function handlePortfolioMainChange(property, value) {

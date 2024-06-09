@@ -4,7 +4,7 @@ import {useImmer} from 'use-immer';
 function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 	const tempObj = {...work};
 	const [newCard, updateNewCard] = useImmer(tempObj);
-	const defaultCheck = false || newCard.endOfWork === 'current';
+	const defaultCheck = newCard.endOfWork === 'current';
 	const [currentWork, setCurrentWork] = useImmer(defaultCheck);
 	const [errorStyle, setErrorStyle] = useImmer({borderColor: 'black'});
 
@@ -40,6 +40,15 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 		updateNewCard((draft) => {
 			draft[property] = value;
 		});
+	}
+
+	let endOfWorkValue;
+	if (currentWork) {
+		endOfWorkValue = '';
+	} else if (newCard.endOfWork === 'current') {
+		endOfWorkValue = '';
+	} else {
+		endOfWorkValue = newCard.endOfWork;
 	}
 
 	return (
@@ -96,13 +105,7 @@ function WorkCard({work, onCloseCard, onDeleteCard, onUpdateCard, onAddCard}) {
 								}
 								type="month"
 								id="endOfWork"
-								value={
-									currentWork
-										? ''
-										: newCard.endOfWork === 'current'
-										? ''
-										: newCard.endOfWork
-								}
+								value={endOfWorkValue}
 								disabled={currentWork}
 								onChange={(e) => onWorkChange('endOfWork', e.target.value)}
 							/>

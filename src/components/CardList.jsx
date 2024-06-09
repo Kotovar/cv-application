@@ -40,16 +40,17 @@ function CardList(props) {
 
 	const closeOpenCard = () => setCurrentCard('');
 
+	function getCardComponent(type, card, props) {
+		if (type === 'work') {
+			return <WorkCard onCloseCard={closeOpenCard} work={card} {...props} />;
+		}
+		return (
+			<EducationCard onCloseCard={closeOpenCard} education={card} {...props} />
+		);
+	}
+
 	return currentCard ? (
-		props.cardType === 'work' ? (
-			<WorkCard onCloseCard={closeOpenCard} work={currentCard} {...props} />
-		) : (
-			<EducationCard
-				onCloseCard={closeOpenCard}
-				education={currentCard}
-				{...props}
-			/>
-		)
+		getCardComponent(props.cardType, currentCard, props)
 	) : (
 		<div
 			className={

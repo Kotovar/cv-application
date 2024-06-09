@@ -11,7 +11,7 @@ function EducationCard({
 	const tempObj = {...education};
 	const [newCard, updateNewCard] = useImmer(tempObj);
 
-	const defaultCheck = false || newCard.endOfEducation === 'current';
+	const defaultCheck = newCard.endOfEducation === 'current';
 	const [currentEducation, setCurrentEducation] = useImmer(defaultCheck);
 	const [errorStyle, setErrorStyle] = useImmer({borderColor: 'black'});
 
@@ -52,6 +52,15 @@ function EducationCard({
 		updateNewCard((draft) => {
 			draft[property] = value;
 		});
+	}
+
+	let endOfEducationValue;
+	if (currentEducation) {
+		endOfEducationValue = '';
+	} else if (newCard.endOfEducation === 'current') {
+		endOfEducationValue = '';
+	} else {
+		endOfEducationValue = newCard.endOfEducation;
 	}
 
 	return (
@@ -109,13 +118,7 @@ function EducationCard({
 								min={newCard.startOfEducation}
 								max={new Date().getFullYear()}
 								id="endOfEducation"
-								value={
-									currentEducation
-										? ''
-										: newCard.endOfEducation === 'current'
-										? ''
-										: newCard.endOfEducation
-								}
+								value={endOfEducationValue}
 								disabled={currentEducation}
 								onChange={(e) =>
 									onEducationChange('endOfEducation', e.target.value)
