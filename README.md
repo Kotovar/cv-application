@@ -11,8 +11,6 @@ To use CV-Application, you need to have Node.js and npm installed on your system
 
 `npm install` to install all dependencies
 
-`npm install -g vite @vitejs/plugin-react vite-plugin-simple-html` to install vite
-
 `npm run dev` to start the development server
 
 open `http://localhost:[path]` in your browser
